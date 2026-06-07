@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Commandes - Ounmon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen pb-24">
+
+    <!-- 🏷️ EN-TÊTE STICKY -->
+    <nav class="bg-white border-b border-gray-100 h-16 sticky top-0 px-4 flex items-center justify-between z-20 shadow-sm">
+        <div class="flex items-center gap-3">
+            <a href="home.html" class="text-gray-500 hover:text-primary transition flex items-center justify-center p-2 rounded-xl bg-gray-50">
+                <i class="bi bi-arrow-left text-lg flex"></i>
+            </a>
+            <h1 class="text-sm font-black text-secondary">Mes Achats</h1>
+        </div>
+        <button class="text-gray-500 p-2 text-sm"><i class="bi bi-search"></i></button>
+    </nav>
+
+    <!-- 🗂️ FILTRES PAR ONGLETS -->
+    <div class="bg-white border-b border-gray-100 sticky top-16 z-10">
+        <div class="max-w-md mx-auto flex justify-around text-xs font-bold">
+            <button class="flex-1 text-center py-3 border-b-2 border-primary text-primary">En cours (2)</button>
+            <button class="flex-1 text-center py-3 border-b-2 border-transparent text-gray-400 hover:text-secondary transition">Historique</button>
+        </div>
+    </div>
+
+    <!-- 📦 CORPS DE LA PAGE -->
+    <main class="max-w-md mx-auto p-4 space-y-4">
+
+        <!-- Commande 1 : En cours d'acheminement -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm space-y-3.5">
+            <div class="flex justify-between items-center border-b border-gray-50 pb-2.5">
+                <span class="text-[10px] text-gray-400 font-bold">Réf: #OU-9842</span>
+                <span class="text-[10px] font-black text-primary bg-orange-50 px-2 py-0.5 rounded-full border border-orange-100 flex items-center gap-1">
+                    <i class="bi bi-truck text-[11px]"></i> En chemin
+                </span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-primary text-xl font-bold shrink-0 border border-gray-100">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <h2 class="text-xs font-black text-secondary truncate">Nike Air Force 1 · Taille 42</h2>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Boutique : <span class="font-bold">Zara Horizon</span></p>
+                    <p class="text-xs font-black text-secondary mt-1">16 000 FCFA</p>
+                </div>
+            </div>
+
+            <div class="flex gap-2 pt-1">
+                <a href="track-order.html" class="flex-1 bg-primary hover:bg-opacity-90 text-white font-black text-[11px] py-2.5 rounded-xl text-center shadow-md shadow-primary/10 transition">
+                    Suivre le colis
+                </a>
+                <a href="messages.html" class="w-11 h-11 bg-gray-50 hover:bg-gray-100 border border-gray-100 text-gray-600 rounded-xl flex items-center justify-center transition">
+                    <i class="bi bi-chat-left-text text-sm flex"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Commande 2 : En attente de validation -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm space-y-3.5">
+            <div class="flex justify-between items-center border-b border-gray-50 pb-2.5">
+                <span class="text-[10px] text-gray-400 font-bold">Réf: #OU-1105</span>
+                <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-100 flex items-center gap-1">
+                    <i class="bi bi-clock-history"></i> En attente du vendeur
+                </span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-amber-600 text-xl font-bold shrink-0 border border-gray-100">
+                    <i class="bi bi-bag"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <h2 class="text-xs font-black text-secondary truncate">Pagne Wax Hollandais (6 Yards)</h2>
+                    <p class="text-[10px] text-gray-400 mt-0.5">Boutique : <span class="font-bold">Maman Africa Textiles</span></p>
+                    <p class="text-xs font-black text-secondary mt-1">25 000 FCFA</p>
+                </div>
+            </div>
+
+            <div class="flex gap-2 pt-1">
+                <button onclick="alert('Annulation demandée')" class="flex-1 bg-gray-50 hover:bg-red-50 border border-gray-100 hover:border-red-100 text-gray-500 hover:text-red-500 font-bold text-[11px] py-2.5 rounded-xl transition">
+                    Annuler la commande
+                </button>
+                <a href="messages.html" class="w-11 h-11 bg-gray-50 hover:bg-gray-100 border border-gray-100 text-gray-600 rounded-xl flex items-center justify-center transition">
+                    <i class="bi bi-chat-left-text text-sm flex"></i>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 📱 BARRE DE NAVIGATION COMMUNE BASSE -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 h-16 px-6 flex items-center justify-between z-30 max-w-md mx-auto shadow-lg">
+        <a href="home.html" class="text-gray-400 hover:text-primary transition flex flex-col items-center gap-0.5">
+            <i class="bi bi-house-door text-base"></i>
+            <span class="text-[9px] font-bold">Accueil</span>
+        </a>
+        <a href="favorites.html" class="text-gray-400 hover:text-primary transition flex flex-col items-center gap-0.5">
+            <i class="bi bi-heart text-base"></i>
+            <span class="text-[9px] font-bold">Favoris</span>
+        </a>
+        <a href="orders-list.html" class="text-primary flex flex-col items-center gap-0.5">
+            <i class="bi bi-bag-check-fill text-base"></i>
+            <span class="text-[9px] font-bold">Commandes</span>
+        </a>
+        <a href="profile.html" class="text-gray-400 hover:text-primary transition flex flex-col items-center gap-0.5">
+            <i class="bi bi-person text-base"></i>
+            <span class="text-[9px] font-bold">Mon Compte</span>
+        </a>
+    </div>
+
+</body>
+</html>

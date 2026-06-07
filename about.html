@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - Ounmon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- 🌐 BARRE DE NAVIGATION (Adaptée car le fichier est à la racine) -->
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-black text-secondary tracking-tight">
+                Ounmon<span class="text-primary">.</span>
+            </a>
+
+            <!-- Liens d'accès rapides -->
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="text-xs font-bold text-gray-600 hover:text-primary transition">Retour à l'accueil</a>
+                <a href="vendor/dashboard.html" class="bg-secondary text-white font-bold text-xs px-4 py-2.5 rounded-xl hover:bg-opacity-90 transition shadow-md">
+                    Espace Pro
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 🚀 EN-TÊTE IMMERSIF (Dominance Orange) -->
+    <header class="bg-gradient-to-br from-primary to-[#E64A19] text-white py-20 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+        <div class="max-w-3xl mx-auto space-y-4 relative z-10">
+            <span class="text-[11px] uppercase font-black bg-white/20 text-orange-100 px-3 py-1 rounded-full">Notre Mission</span>
+            <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-tight">
+                Rapprocher les cœurs <br><span class="text-orange-100">et les commerces locaux.</span>
+            </h1>
+            <p class="text-sm sm:text-base text-orange-50 max-w-xl mx-auto font-medium">
+                Ounmon est la solution de proximité qui digitalise les boutiques de nos quartiers et simplifie les achats des citadins.
+            </p>
+        </div>
+    </header>
+
+    <!-- 🎯 LE CONCEPT EN 3 PILIERS -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+            <h2 class="text-2xl font-black text-secondary">Comment ça marche ?</h2>
+            <p class="text-sm text-gray-500">Un écosystème pensé pour dynamiser l'économie locale sans friction.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Pilier 1 -->
+            <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm space-y-4 hover:border-primary transition duration-300">
+                <div class="w-12 h-12 bg-orange-50 text-primary rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                    <i class="bi bi-shop"></i>
+                </div>
+                <h3 class="text-lg font-black text-secondary">Visibilité Immédiate</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Les commerçants listent leurs stocks en quelques clics sur leur espace **Ounmon Pro**. Les clients découvrent instantanément ce qui est disponible à moins de 5 km d'eux.
+                </p>
+            </div>
+
+            <!-- Pilier 2 -->
+            <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm space-y-4 hover:border-primary transition duration-300">
+                <div class="w-12 h-12 bg-orange-50 text-primary rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                    <i class="bi bi-whatsapp"></i>
+                </div>
+                <h3 class="text-lg font-black text-secondary">Contact Direct</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Pas d'intermédiaire rigide. La commande génère un lead ultra-qualifié et redirige l'acheteur vers le WhatsApp du vendeur pour finaliser les détails ou poser des questions.
+                </p>
+            </div>
+
+            <!-- Pilier 3 -->
+            <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm space-y-4 hover:border-primary transition duration-300">
+                <div class="w-12 h-12 bg-orange-50 text-primary rounded-xl flex items-center justify-center text-2xl shadow-sm">
+                    <i class="bi bi-lightning-charge"></i>
+                </div>
+                <h3 class="text-lg font-black text-secondary">Livraison Éclair</h3>
+                <p class="text-xs text-gray-500 leading-relaxed">
+                    Parce que le produit est déjà stocké dans votre ville, le traitement est immédiat. Récupération en magasin (Click & Collect) ou livraison à domicile en moins d'une heure.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📊 QUELQUES CHIFFRES (Section d'impact visuel) -->
+    <section class="bg-secondary text-white py-16 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="space-y-1">
+                <p class="text-3xl sm:text-4xl font-black text-primary">2026</p>
+                <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Année de lancement</p>
+            </div>
+            <div class="space-y-1">
+                <p class="text-3xl sm:text-4xl font-black text-primary">150+</p>
+                <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Boutiques partenaires</p>
+            </div>
+            <div class="space-y-1">
+                <p class="text-3xl sm:text-4xl font-black text-primary">1h</p>
+                <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Temps de livraison moyen</p>
+            </div>
+            <div class="space-y-1">
+                <p class="text-3xl sm:text-4xl font-black text-primary">98%</p>
+                <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Clients satisfaits</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📢 APPEL À L'ACTION POUR LES VENDEURS -->
+    <section class="max-w-4xl mx-auto px-4 py-16 text-center space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-black text-secondary">Vous êtes commerçant ?</h2>
+        <p class="text-sm text-gray-500 max-w-lg mx-auto leading-relaxed">
+            Ne laissez plus les grandes plateformes impersonnelles intercepter vos clients. Prenez le contrôle de votre visibilité locale dès aujourd'hui.
+        </p>
+        <div class="pt-2">
+            <a href="vendor/auth.html" class="inline-block bg-primary hover:bg-opacity-95 text-white font-black text-sm px-8 py-3.5 rounded-xl transition shadow-lg shadow-primary/20">
+                Rejoindre l'Espace Ounmon Pro
+            </a>
+        </div>
+    </section>
+
+    <!-- 🔏 FOOTER ORANGE HARMONISÉ -->
+    <footer class="bg-gradient-to-br from-primary to-[#E64A19] text-white py-12 shrink-0 relative overflow-hidden shadow-inner mt-auto">
+        <div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-white/10 pb-8 text-sm">
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Ounmon</h4>
+                    <ul class="space-y-2 font-medium text-orange-50/80">
+                        <li><a href="index.html" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="about.html" class="hover:text-white transition">À propos</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Acheter</h4>
+                    <ul class="space-y-2 font-medium text-orange-50/80">
+                        <li><a href="client/track-order.html" class="hover:text-white transition">Suivre ma commande</a></li>
+                        <li><a href="client/messages.html" class="hover:text-white transition">Messages</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Commerçants</h4>
+                    <ul class="space-y-2 font-medium text-orange-50/80">
+                        <li><a href="vendor/dashboard.html" class="hover:text-white transition">Espace Pro</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Réseaux</h4>
+                    <div class="flex gap-4 text-xl pt-1 text-orange-100">
+                        <a href="#" class="hover:text-white transition"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-orange-100/90">
+                <div class="text-2xl font-black tracking-tight text-white">
+                    Ounmon<span class="text-secondary">.</span>
+                </div>
+                <p>&copy; 2026 Ounmon. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

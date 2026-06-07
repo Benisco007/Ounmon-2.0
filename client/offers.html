@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offres Locales & Promos Flash - Ounmon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- 🌐 BARRE DE NAVIGATION CLIENT "EFFET WAOUH" -->
+    <div class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100/80 shadow-sm transition-all duration-300">
+        <!-- PREMIER NIVEAU -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            <a href="../index.html" class="text-2xl font-black text-secondary tracking-tight shrink-0 group">
+                Ounmon<span class="text-primary inline-block group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-2 bg-orange-50/60 hover:bg-primary hover:text-white px-4 py-2 rounded-full text-xs font-black text-primary border border-orange-100/50 cursor-pointer transition-all duration-300 hover:shadow-md hover:shadow-primary/10 group">
+                <i class="bi bi-geo-alt-fill animate-bounce"></i>
+                <span>Cotonou, Bénin</span>
+                <i class="bi bi-chevron-down ml-1 text-[10px] group-hover:rotate-180 transition-transform duration-300"></i>
+            </div>
+                <div class="w-px h-6 bg-gray-200 mx-1"></div>
+                <a href="../vendor/auth.html" class="relative group overflow-hidden bg-secondary text-white font-black text-xs px-4 py-2.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-secondary/20 shrink-0 flex items-center gap-2">
+                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></span>
+                    <i class="bi bi-shop text-sm text-primary group-hover:text-white transition-colors relative z-10"></i> 
+                    <span class="hidden sm:inline relative z-10">Espace Pro</span>
+                </a>
+            </div>
+        </div>
+        <!-- DEUXIÈME NIVEAU -->
+        <div class="bg-white/40 border-t border-gray-100/50 py-1 px-4 sm:px-6 lg:px-8 overflow-x-auto scrollbar-none">
+            <div class="max-w-7xl mx-auto flex items-center gap-8 text-xs font-black tracking-wider uppercase text-gray-400 whitespace-nowrap h-10">
+                <a href="../index.html" class="relative text-gray-500 hover:text-secondary flex items-center gap-2 h-full border-b-2 border-transparent hover:border-secondary transition-all duration-300 px-1">
+                    <i class="bi bi-house-door text-sm"></i> Accueil
+                </a>
+                <a href="./categories.html" class="relative text-gray-500 hover:text-secondary flex items-center gap-2 h-full border-b-2 border-transparent hover:border-secondary transition-all duration-300 px-1 group">
+                    <i class="bi bi-grid text-sm group-hover:rotate-90 transition-transform duration-300"></i> Catégories
+                </a>
+                <a href="./shop.html" class="relative text-gray-500 hover:text-secondary flex items-center gap-2 h-full border-b-2 border-transparent hover:border-secondary transition-all duration-300 px-1 group">
+                    <i class="bi bi-building text-sm group-hover:scale-110 transition-transform duration-300"></i> Boutiques à la une
+                </a>
+                <a href="./offers.html" class="relative text-primary flex items-center gap-2 h-full border-b-2 border-primary transition-all duration-300 px-1">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <i class="bi bi-lightning-fill text-sm text-amber-500"></i> Offres Locales
+                </a>
+                <a href="../about.html" class="ml-auto flex items-center gap-1.5 text-[11px] font-bold lowercase normal-case text-gray-400 hover:text-primary transition-colors bg-gray-100/60 hover:bg-orange-50 px-3 py-1.5 rounded-lg border border-transparent hover:border-orange-100">
+                    <i class="bi bi-info-circle"></i> Qui sommes-nous ?
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🚀 EN-TÊTE IMMERSIF AVEC BADGE LIVE -->
+    <header class="bg-gradient-to-br from-secondary to-gray-800 text-white py-14 px-4 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-80 h-80 bg-primary opacity-10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+        
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+            <div class="space-y-3 text-center md:text-left">
+                <div class="inline-flex items-center gap-2 bg-primary/20 text-primary border border-primary/30 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">
+                    <span class="w-1.5 h-1.5 bg-primary rounded-full animate-ping"></span>
+                    Promotions en cours
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-black tracking-tight leading-tight">
+                    Les pépites de vos quartiers <br><span class="text-primary">à prix cassés.</span>
+                </h1>
+                <p class="text-xs sm:text-sm text-gray-400 max-w-xl">
+                    Stocks limités, exclusivités locales et réductions immédiates chez vos marchands de confiance à Cotonou.
+                </p>
+            </div>
+            
+            <!-- Compte à rebours global de la journée -->
+            <div class="bg-white/5 border border-white/10 p-4 rounded-2xl flex items-center gap-4 text-center backdrop-blur-sm shrink-0">
+                <div class="space-y-1">
+                    <span class="block text-2xl font-black text-primary">11</span>
+                    <span class="text-[9px] uppercase text-gray-400 font-bold tracking-wider">Heures</span>
+                </div>
+                <span class="text-xl font-bold text-white/30">:</span>
+                <div class="space-y-1">
+                    <span class="block text-2xl font-black text-primary">42</span>
+                    <span class="text-[9px] uppercase text-gray-400 font-bold tracking-wider">Min</span>
+                </div>
+                <span class="text-xl font-bold text-white/30">:</span>
+                <div class="space-y-1">
+                    <span class="block text-2xl font-black text-primary">05</span>
+                    <span class="text-[9px] uppercase text-gray-400 font-bold tracking-wider">Sec</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 🛍️ FLUX DES OFFRES -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1 w-full space-y-8">
+        
+        <!-- Filtres rapides -->
+        <div class="flex items-center gap-2 overflow-x-auto scrollbar-none pb-2 border-b border-gray-100 text-xs font-bold">
+            <button class="bg-primary text-white px-4 py-2 rounded-xl transition whitespace-nowrap">🔥 Tout voir</button>
+            <button class="bg-white border border-gray-200 text-gray-600 hover:border-primary px-4 py-2 rounded-xl transition whitespace-nowrap">👕 Mode & Chaussures</button>
+            <button class="bg-white border border-gray-200 text-gray-600 hover:border-primary px-4 py-2 rounded-xl transition whitespace-nowrap">🍔 Food & Snack</button>
+            <button class="bg-white border border-gray-200 text-gray-600 hover:border-primary px-4 py-2 rounded-xl transition whitespace-nowrap">🔌 Électronique</button>
+        </div>
+
+        <!-- Grille de cartes produits en promo -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Carte Promo 1 -->
+            <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group relative">
+                <div class="relative bg-gray-100 aspect-square flex items-center justify-center text-gray-400 text-xs italic overflow-hidden">
+                    [Photo Sneakers Air Force]
+                    <span class="absolute top-3 left-3 bg-primary text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md shadow-sm">🔥 -15% Flash</span>
+                </div>
+                <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                    <div class="flex items-center justify-between text-[11px] font-bold border-b border-gray-50 pb-2">
+                        <a href="./shop.html" class="flex items-center gap-1.5 text-gray-500 hover:text-primary transition">
+                            <i class="bi bi-shop text-primary"></i> Zara Horizon
+                        </a>
+                        <a href="./shop.html" class="text-[9px] uppercase bg-orange-50 text-primary px-2 py-1 rounded font-black">Visiter</a>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-bold text-secondary text-sm group-hover:text-primary transition line-clamp-2">Sneakers Nike Air Force 1 - Orange Edition</h3>
+                        <p class="text-[11px] text-red-500 font-bold"><i class="bi bi-clock-history"></i> Reste 3 articles en stock !</p>
+                    </div>
+                    <div class="pt-2 flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-black text-primary">24 500 F</span>
+                            <span class="text-xs text-gray-400 line-through block -mt-1">28 000 F</span>
+                        </div>
+                        <a href="./product-detail.html" class="w-10 h-10 bg-gray-50 group-hover:bg-primary text-secondary group-hover:text-white rounded-xl transition flex items-center justify-center text-sm border border-gray-100 group-hover:border-primary">
+                            <i class="bi bi-arrow-right font-bold text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Promo 2 -->
+            <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group relative">
+                <div class="relative bg-gray-100 aspect-square flex items-center justify-center text-gray-400 text-xs italic overflow-hidden">
+                    [Photo Panier Brochettes]
+                    <span class="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md shadow-sm">✨ 1 acheté = 1 offert</span>
+                </div>
+                <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                    <div class="flex items-center justify-between text-[11px] font-bold border-b border-gray-50 pb-2">
+                        <a href="./shop.html" class="flex items-center gap-1.5 text-gray-500 hover:text-primary transition">
+                            <i class="bi bi-shop text-primary"></i> Saveurs du Pays
+                        </a>
+                        <a href="./shop.html" class="text-[9px] uppercase bg-orange-50 text-primary px-2 py-1 rounded font-black">Visiter</a>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-bold text-secondary text-sm group-hover:text-primary transition line-clamp-2">Formule Chabi Complet - Spécial Weekend</h3>
+                        <p class="text-[11px] text-green-600 font-bold"><i class="bi bi-scooter"></i> Livraison gratuite < 1h</p>
+                    </div>
+                    <div class="pt-2 flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-black text-secondary group-hover:text-primary transition">5 000 F</span>
+                        </div>
+                        <a href="./product-detail.html" class="w-10 h-10 bg-gray-50 group-hover:bg-primary text-secondary group-hover:text-white rounded-xl transition flex items-center justify-center text-sm border border-gray-100 group-hover:border-primary">
+                            <i class="bi bi-arrow-right font-bold text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Promo 3 -->
+            <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group relative">
+                <div class="relative bg-gray-100 aspect-square flex items-center justify-center text-gray-400 text-xs italic overflow-hidden">
+                    [Photo Powerbank]
+                    <span class="absolute top-3 left-3 bg-primary text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md shadow-sm">⚡ -30% Tech</span>
+                </div>
+                <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                    <div class="flex items-center justify-between text-[11px] font-bold border-b border-gray-50 pb-2">
+                        <a href="./shop.html" class="flex items-center gap-1.5 text-gray-500 hover:text-primary transition">
+                            <i class="bi bi-shop text-primary"></i> Electro Bénin
+                        </a>
+                        <a href="./shop.html" class="text-[9px] uppercase bg-orange-50 text-primary px-2 py-1 rounded font-black">Visiter</a>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-bold text-secondary text-sm group-hover:text-primary transition line-clamp-2">Batterie Externe Solaire Fast Charge 20k mAh</h3>
+                        <p class="text-[11px] text-gray-400 font-medium"><i class="bi bi-shield-check"></i> Garantie 6 mois</p>
+                    </div>
+                    <div class="pt-2 flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-black text-primary">14 000 F</span>
+                            <span class="text-xs text-gray-400 line-through block -mt-1">20 000 F</span>
+                        </div>
+                        <a href="./product-detail.html" class="w-10 h-10 bg-gray-50 group-hover:bg-primary text-secondary group-hover:text-white rounded-xl transition flex items-center justify-center text-sm border border-gray-100 group-hover:border-primary">
+                            <i class="bi bi-arrow-right font-bold text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Promo 4 -->
+            <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col justify-between group relative">
+                <div class="relative bg-gray-100 aspect-square flex items-center justify-center text-gray-400 text-xs italic overflow-hidden">
+                    [Photo Robe d'été]
+                    <span class="absolute top-3 left-3 bg-primary text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md shadow-sm">🔥 -20% Ventes Privées</span>
+                </div>
+                <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+                    <div class="flex items-center justify-between text-[11px] font-bold border-b border-gray-50 pb-2">
+                        <a href="./shop.html" class="flex items-center gap-1.5 text-gray-500 hover:text-primary transition">
+                            <i class="bi bi-shop text-primary"></i> Zara Horizon
+                        </a>
+                        <a href="./shop.html" class="text-[9px] uppercase bg-orange-50 text-primary px-2 py-1 rounded font-black">Visiter</a>
+                    </div>
+                    <div class="space-y-1">
+                        <h3 class="font-bold text-secondary text-sm group-hover:text-primary transition line-clamp-2">Robe Fluide d'Été Fleurie Premium</h3>
+                        <p class="text-[11px] text-red-500 font-bold"><i class="bi bi-hourglass-split"></i> Plus que quelques heures</p>
+                    </div>
+                    <div class="pt-2 flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-black text-primary">16 000 F</span>
+                            <span class="text-xs text-gray-400 line-through block -mt-1">20 000 F</span>
+                        </div>
+                        <a href="./product-detail.html" class="w-10 h-10 bg-gray-50 group-hover:bg-primary text-secondary group-hover:text-white rounded-xl transition flex items-center justify-center text-sm border border-gray-100 group-hover:border-primary">
+                            <i class="bi bi-arrow-right font-bold text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 🔏 FOOTER ORANGE HARMONISÉ -->
+    <footer class="bg-gradient-to-br from-primary to-[#E64A19] text-white py-12 shrink-0 relative overflow-hidden shadow-inner mt-auto">
+        <div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-white/10 pb-8 text-sm">
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Ounmon</h4>
+                    <ul class="space-y-2 font-medium text-orange-50/80">
+                        <li><a href="./index.html" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="../about.html" class="hover:text-white transition">À propos</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Acheter</h4>
+                    <ul class="space-y-2 font-medium text-orange-50/80">
+                        <li><a href="./track-order.html" class="hover:text-white transition">Suivre ma commande</a></li>
+                        <li><a href="./messages.html" class="hover:text-white transition">Messages</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Commerçants</h4>
+                    <ul class="space-y-2 font-medium text-orange-50/80">
+                        <li><a href="../vendor/auth.html" class="hover:text-white transition">Espace Pro</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Réseaux</h4>
+                    <div class="flex gap-4 text-xl pt-1 text-orange-100">
+                        <a href="#" class="hover:text-white transition"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-orange-100/90">
+                <div class="text-2xl font-black tracking-tight text-white">
+                    Ounmon<span class="text-secondary">.</span>
+                </div>
+                <p>&copy; 2026 Ounmon. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

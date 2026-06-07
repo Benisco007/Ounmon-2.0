@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ounmon Pro - Ajouter un produit</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- 📱 HEADER MOBILE (Menu) -->
+    <header class="bg-secondary text-white p-4 flex items-center justify-between md:hidden shrink-0">
+        <a href="#" class="text-xl font-black tracking-tight">Ounmon<span class="text-primary">.</span> Pro</a>
+        <button onclick="toggleMobileSidebar()" class="text-white text-2xl focus:outline-none">
+            <i class="bi bi-list"></i>
+        </button>
+    </header>
+
+    <!-- 🟪 SIDEBAR DE NAVIGATION (Identique au Dashboard pour la cohérence) -->
+    <aside id="sidebar" class="hidden md:flex flex-col w-64 bg-secondary text-gray-400 p-6 shrink-0 z-50 fixed inset-y-0 left-0 md:relative md:translate-x-0 transition-transform duration-300">
+        <button onclick="toggleMobileSidebar()" class="md:hidden text-white absolute top-4 right-4 text-xl"><i class="bi bi-x-lg"></i></button>
+        <div class="mb-8 hidden md:block">
+            <a href="dashboard.html" class="text-2xl font-black text-white tracking-tight">
+                Ounmon<span class="text-primary">.</span><span class="text-xs align-super font-medium text-orange-400 ml-1">PRO</span>
+            </a>
+        </div>
+        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl mb-6 border border-white/5">
+            <div class="w-10 h-10 bg-primary text-white font-black rounded-lg flex items-center justify-center text-sm">ZH</div>
+            <div class="overflow-hidden">
+                <p class="text-xs font-bold text-white truncate">Zara Horizon</p>
+                <span class="text-[10px] text-green-400 font-bold">En ligne</span>
+            </div>
+        </div>
+        <nav class="flex-1 space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-speedometer2"></i> Vue d'ensemble
+            </a>
+            <a href="products-list.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-box-seam"></i> Mes Produits (14)
+            </a>
+            <a href="#" class="flex items-center gap-3 text-white bg-primary font-bold px-4 py-3 rounded-xl transition text-sm shadow-lg shadow-primary/20">
+                <i class="bi bi-plus-circle"></i> Ajouter un produit
+            </a>
+            <a href="orders.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-receipt"></i> Commandes
+            </a>
+            <a href="billing.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-credit-card"></i> Abonnement & Leads
+            </a>
+        </nav>
+        <div class="border-t border-white/5 pt-4">
+            <a href="../index.html" class="flex items-center gap-3 text-xs hover:text-white px-4 py-2 rounded-lg transition">
+                <i class="bi bi-arrow-left"></i> Retour au site
+            </a>
+        </div>
+    </aside>
+
+    <!-- 📄 CONTENU PRINCIPAL : FORMULAIRE D'AJOUT -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6">
+        
+        <!-- En-tête -->
+        <div class="flex items-center gap-4 border-b border-gray-200 pb-4">
+            <a href="dashboard.html" class="bg-white border border-gray-200 text-gray-600 p-2.5 rounded-xl hover:text-primary hover:border-primary transition flex items-center justify-center">
+                <i class="bi bi-arrow-left text-lg flex"></i>
+            </a>
+            <div>
+                <h1 class="text-2xl font-black text-secondary">Mettre un produit en ligne</h1>
+                <p class="text-xs sm:text-sm text-gray-500">Ajoutez les détails de votre article pour le rendre visible à proximité.</p>
+            </div>
+        </div>
+
+        <!-- Formulaire de soumission -->
+        <form onsubmit="event.preventDefault(); alert('Produit ajouté avec succès (Simulation) !');" class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+            
+            <!-- COLONNES PRINCIPALES (Gauche + Centre) : Détails du produit -->
+            <div class="lg:col-span-2 space-y-6">
+                
+                <!-- Bloc 1 : Informations générales -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                    <h3 class="font-bold text-secondary text-base flex items-center gap-2">
+                        <i class="bi bi-info-circle text-primary"></i> Informations générales
+                    </h3>
+                    
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-gray-500 uppercase">Nom du produit *</label>
+                        <input type="text" placeholder="Ex : Sneakers Nike Air Force 1" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-primary focus:bg-white transition">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Catégorie *</label>
+                            <select required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-primary focus:bg-white transition">
+                                <option value="">Choisir une catégorie</option>
+                                <option value="mode">Vêtements & Mode</option>
+                                <option value="shoes">Chaussures</option>
+                                <option value="resto">Restaurants & Nourriture</option>
+                                <option value="electro">Électronique & Téléphones</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Délai de livraison estimé *</label>
+                            <select required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-primary focus:bg-white transition">
+                                <option value="flash">Moins d'1 heure (Livraison Flash)</option>
+                                <option value="day">Dans la journée</option>
+                                <option value="24h">Sous 24h à 48h</option>
+                                <option value="order">Sur commande (Délai variable)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-gray-500 uppercase">Description du produit</label>
+                        <textarea rows="4" placeholder="Décrivez votre produit (matière, état, conditions de livraison...)" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-primary focus:bg-white transition"></textarea>
+                    </div>
+                </div>
+
+                <!-- Bloc 2 : Prix & Promotions -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                    <h3 class="font-bold text-secondary text-base flex items-center gap-2">
+                        <i class="bi bi-tags text-primary"></i> Prix & Remise
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Prix de vente de base (FCFA) *</label>
+                            <input type="number" placeholder="Ex : 25000" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-primary focus:bg-white transition">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Prix promotionnel (Optionnel)</label>
+                            <input type="number" placeholder="Ex : 20000 (Affichera un prix barré)" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-primary focus:bg-white transition">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 3 : Stock & Variantes complexes -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                    <h3 class="font-bold text-secondary text-base flex items-center gap-2">
+                        <i class="bi bi-layers text-primary"></i> Stocks & Variantes
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Quantité globale en stock *</label>
+                            <input type="number" placeholder="Ex : 10" required class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:outline-none focus:border-primary focus:bg-white transition">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Disponibilité</label>
+                            <div class="flex gap-4 h-full items-center">
+                                <label class="flex items-center gap-2 cursor-pointer text-sm font-medium"><input type="radio" name="dispo" checked class="accent-primary h-4 w-4"> En Stock</label>
+                                <label class="flex items-center gap-2 cursor-pointer text-sm font-medium"><input type="radio" name="dispo" class="accent-primary h-4 w-4"> Rupture</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Variantes dynamiques simulées -->
+                    <div class="border-t border-gray-50 pt-3 space-y-3">
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider block">Variantes disponibles</label>
+                        
+                        <!-- Tailles / Pointures -->
+                        <div class="space-y-1.5">
+                            <span class="text-xs font-bold text-gray-700 block">Tailles ou Tailles disponibles :</span>
+                            <div class="flex flex-wrap gap-2">
+                                <label class="border border-gray-200 rounded-xl px-3 py-1.5 text-xs font-bold cursor-pointer select-none has-[:checked]:bg-primary has-[:checked]:text-white has-[:checked]:border-primary transition"><input type="checkbox" class="hidden"> 39</label>
+                                <label class="border border-gray-200 rounded-xl px-3 py-1.5 text-xs font-bold cursor-pointer select-none has-[:checked]:bg-primary has-[:checked]:text-white has-[:checked]:border-primary transition"><input type="checkbox" class="hidden"> 40</label>
+                                <label class="border border-gray-200 rounded-xl px-3 py-1.5 text-xs font-bold cursor-pointer select-none has-[:checked]:bg-primary has-[:checked]:text-white has-[:checked]:border-primary transition"><input type="checkbox" class="hidden"> 41</label>
+                                <label class="border border-gray-200 rounded-xl px-3 py-1.5 text-xs font-bold cursor-pointer select-none has-[:checked]:bg-primary has-[:checked]:text-white has-[:checked]:border-primary transition"><input type="checkbox" class="hidden"> 42</label>
+                                <label class="border border-gray-200 rounded-xl px-3 py-1.5 text-xs font-bold cursor-pointer select-none has-[:checked]:bg-primary has-[:checked]:text-white has-[:checked]:border-primary transition"><input type="checkbox" class="hidden"> XL</label>
+                            </div>
+                        </div>
+
+                        <!-- Couleurs -->
+                        <div class="space-y-1.5 pt-1">
+                            <span class="text-xs font-bold text-gray-700 block">Couleurs disponibles :</span>
+                            <div class="flex gap-3">
+                                <label class="w-6 h-6 rounded-full bg-black border-2 border-transparent cursor-pointer has-[:checked]:border-primary flex items-center justify-center transition"><input type="checkbox" class="hidden"><i class="bi bi-check text-white text-xs hidden font-bold"></i></label>
+                                <label class="w-6 h-6 rounded-full bg-white border-2 border-gray-300 cursor-pointer has-[:checked]:border-primary flex items-center justify-center transition"><input type="checkbox" class="hidden"><i class="bi bi-check text-secondary text-xs hidden font-bold"></i></label>
+                                <label class="w-6 h-6 rounded-full bg-orange-500 border-2 border-transparent cursor-pointer has-[:checked]:border-black flex items-center justify-center transition"><input type="checkbox" class="hidden"><i class="bi bi-check text-white text-xs hidden font-bold"></i></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLONNE DROITE : Images + Actions de soumission -->
+            <div class="space-y-6">
+                
+                <!-- Bloc Images -->
+                <div class="bg-white p-5 sm:p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                    <h3 class="font-bold text-secondary text-base flex items-center gap-2">
+                        <i class="bi bi-image text-primary"></i> Photos du produit
+                    </h3>
+                    
+                    <!-- Zone d'Uploader Principale -->
+                    <label class="border-2 border-dashed border-gray-200 hover:border-primary rounded-2xl p-6 text-center flex flex-col items-center justify-center gap-2 cursor-pointer transition bg-gray-50/50">
+                        <input type="file" accept="image/*" class="hidden" onchange="alert('Image sélectionnée (Démo)')">
+                        <div class="w-12 h-12 bg-orange-50 text-primary rounded-full flex items-center justify-center text-xl shadow-sm">
+                            <i class="bi bi-cloud-arrow-up"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-gray-700">Photo principale *</p>
+                            <p class="text-[10px] text-gray-400 mt-0.5">Glissez un fichier ou cliquez ici</p>
+                        </div>
+                    </label>
+
+                    <!-- Galerie miniatures additionnelles -->
+                    <div class="grid grid-cols-3 gap-2">
+                        <label class="border border-dashed border-gray-200 hover:border-primary rounded-xl aspect-square flex flex-col items-center justify-center cursor-pointer text-gray-400 text-lg bg-gray-50 transition"><input type="file" class="hidden"><i class="bi bi-plus-lg"></i></label>
+                        <label class="border border-dashed border-gray-200 hover:border-primary rounded-xl aspect-square flex flex-col items-center justify-center cursor-pointer text-gray-400 text-lg bg-gray-50 transition"><input type="file" class="hidden"><i class="bi bi-plus-lg"></i></label>
+                        <label class="border border-dashed border-gray-200 hover:border-primary rounded-xl aspect-square flex flex-col items-center justify-center cursor-pointer text-gray-400 text-lg bg-gray-50 transition"><input type="file" class="hidden"><i class="bi bi-plus-lg"></i></label>
+                    </div>
+                </div>
+
+                <!-- Bloc Validation Finale -->
+                <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm space-y-3">
+                    <button type="submit" class="w-full bg-primary text-white font-black text-sm py-3.5 rounded-xl hover:bg-opacity-90 transition shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                        <i class="bi bi-cloud-check"></i> Publier immédiatement
+                    </button>
+                    <a href="dashboard.html" class="w-full bg-gray-100 text-gray-600 font-bold text-xs py-3 rounded-xl hover:bg-gray-200 transition flex items-center justify-center">
+                        Annuler et retourner
+                    </a>
+                </div>
+
+            </div>
+        </form>
+    </main>
+
+    <!-- ⚙️ SCRIPT RESPONSIVE SIDEBAR MENU MOBILE -->
+    <script>
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                sidebar.classList.add('block', 'translate-x-0');
+            } else {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('block', 'translate-x-0');
+            }
+        }
+
+        // Script de style interactif pour les cases à cocher de couleur simulées
+        document.querySelectorAll('label[class*="bg-"]').forEach(label => {
+            label.addEventListener('click', function() {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                const checkIcon = this.querySelector('.bi-check');
+                if(checkbox && checkIcon) {
+                    setTimeout(() => {
+                        if(checkbox.checked) {
+                            checkIcon.classList.remove('hidden');
+                        } else {
+                            checkIcon.classList.add('hidden');
+                        }
+                    }, 50);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

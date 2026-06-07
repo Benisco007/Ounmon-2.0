@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catégories - Ounmon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Masquer la scrollbar pour le menu thématique */
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- 🌐 BARRE DE NAVIGATION CLIENT "EFFET WAOUH" -->
+    <div class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100/80 shadow-sm transition-all duration-300">
+        <!-- PREMIER NIVEAU -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            <a href="../index.html" class="text-2xl font-black text-secondary tracking-tight shrink-0 group">
+                Ounmon<span class="text-primary inline-block group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">.</span>
+            </a>
+            <div class="hidden md:flex items-center gap-2 bg-orange-50/60 hover:bg-primary hover:text-white px-4 py-2 rounded-full text-xs font-black text-primary border border-orange-100/50 cursor-pointer transition-all duration-300 hover:shadow-md hover:shadow-primary/10 group">
+                <i class="bi bi-geo-alt-fill animate-bounce"></i>
+                <span>Cotonou, Bénin</span>
+                <i class="bi bi-chevron-down ml-1 text-[10px] group-hover:rotate-180 transition-transform duration-300"></i>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-4 ml-auto">
+                <div class="w-px h-6 bg-gray-200 mx-1"></div>
+                <a href="../vendor/auth.html" class="relative group overflow-hidden bg-secondary text-white font-black text-xs px-4 py-2.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-secondary/20 shrink-0 flex items-center gap-2">
+                    <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-primary to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></span>
+                    <i class="bi bi-shop text-sm text-primary group-hover:text-white transition-colors relative z-10"></i> 
+                    <span class="hidden sm:inline relative z-10">Espace Pro</span>
+                </a>
+            </div>
+        </div>
+        <!-- DEUXIÈME NIVEAU -->
+        <div class="bg-white/40 border-t border-gray-100/50 py-1 px-4 sm:px-6 lg:px-8 overflow-x-auto scrollbar-none">
+            <div class="max-w-7xl mx-auto flex items-center gap-8 text-xs font-black tracking-wider uppercase text-gray-400 whitespace-nowrap h-10">
+                <a href="../index.html" class="relative text-gray-500 hover:text-secondary flex items-center gap-2 h-full border-b-2 border-transparent hover:border-secondary transition-all duration-300 px-1">
+                    <i class="bi bi-house-door text-sm"></i> Accueil
+                </a>
+                <a href="./categories.html" class="relative text-primary flex items-center gap-2 h-full border-b-2 border-primary transition-all duration-300 px-1 group">
+                    <i class="bi bi-grid-fill text-sm"></i> Catégories
+                </a>
+                <a href="./shop.html" class="relative text-gray-500 hover:text-secondary flex items-center gap-2 h-full border-b-2 border-transparent hover:border-secondary transition-all duration-300 px-1 group">
+                    <i class="bi bi-building text-sm group-hover:scale-110 transition-transform duration-300"></i> Boutiques à la une
+                </a>
+                <a href="offers.html" class="relative text-gray-500 hover:text-secondary flex items-center gap-2 h-full border-b-2 border-transparent hover:border-secondary transition-all duration-300 px-1 group">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <i class="bi bi-lightning text-sm text-amber-500 group-hover:animate-bounce"></i> Offres Locales
+                </a>
+                <a href="../about.html" class="ml-auto flex items-center gap-1.5 text-[11px] font-bold lowercase normal-case text-gray-400 hover:text-primary transition-colors bg-gray-100/60 hover:bg-orange-50 px-3 py-1.5 rounded-lg border border-transparent hover:border-orange-100">
+                    <i class="bi bi-info-circle"></i> Qui sommes-nous ?
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🚀 EN-TÊTE DYNAMIQUE -->
+    <header class="bg-gradient-to-br from-primary to-[#E64A19] text-white py-12 px-4 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+        <div class="max-w-2xl mx-auto space-y-3 relative z-10">
+            <h1 class="text-3xl sm:text-4xl font-black tracking-tight">Explorez par univers</h1>
+            <p class="text-xs sm:text-sm text-orange-50 font-medium">
+                Trouvez instantanément les produits disponibles en rayon à Cotonou et ses environs.
+            </p>
+        </div>
+    </header>
+
+    <!-- 🗂️ GRILLE DES CATÉGORIES -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            
+            <!-- Catégorie 1: Mode -->
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 hover:border-primary hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div class="w-14 h-14 bg-orange-50 text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+                    <i class="bi bi-tags"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-black text-secondary text-sm sm:text-base group-hover:text-primary transition-colors">Mode & Vêtements</h3>
+                    <p class="text-[11px] text-gray-400 font-bold uppercase">42 Boutiques</p>
+                </div>
+            </div>
+
+            <!-- Catégorie 2: Électronique -->
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 hover:border-primary hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mx-auto group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+                    <i class="bi bi-phone"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-black text-secondary text-sm sm:text-base group-hover:text-primary transition-colors">Tech & Électronique</h3>
+                    <p class="text-[11px] text-gray-400 font-bold uppercase">18 Boutiques</p>
+                </div>
+            </div>
+
+            <!-- Catégorie 3: Restauration -->
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 hover:border-primary hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div class="w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center text-2xl mx-auto group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+                    <i class="bi bi-egg-fried"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-black text-secondary text-sm sm:text-base group-hover:text-primary transition-colors">Restaurants & Fast-Food</h3>
+                    <p class="text-[11px] text-gray-400 font-bold uppercase">35 Boutiques</p>
+                </div>
+            </div>
+
+            <!-- Catégorie 4: Beauté -->
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 hover:border-primary hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div class="w-14 h-14 bg-pink-50 text-pink-600 rounded-2xl flex items-center justify-center text-2xl mx-auto group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+                    <i class="bi bi-heart-pulse"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-black text-secondary text-sm sm:text-base group-hover:text-primary transition-colors">Beauté & Cosmétiques</h3>
+                    <p class="text-[11px] text-gray-400 font-bold uppercase">24 Boutiques</p>
+                </div>
+            </div>
+
+            <!-- Catégorie 5: Épicerie -->
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 hover:border-primary hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mx-auto group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+                    <i class="bi bi-basket"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-black text-secondary text-sm sm:text-base group-hover:text-primary transition-colors">Supermarchés & Épiceries</h3>
+                    <p class="text-[11px] text-gray-400 font-bold uppercase">50 Boutiques</p>
+                </div>
+            </div>
+
+            <!-- Catégorie 6: Maison -->
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 hover:border-primary hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mx-auto group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+                    <i class="bi bi-house"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-black text-secondary text-sm sm:text-base group-hover:text-primary transition-colors">Maison & Décoration</h3>
+                    <p class="text-[11px] text-gray-400 font-bold uppercase">12 Boutiques</p>
+                </div>
+            </div>
+
+            <!-- Catégorie 7: Électroménager -->
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 hover:border-primary hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div class="w-14 h-14 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl mx-auto group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+                    <i class="bi bi-tv"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-black text-secondary text-sm sm:text-base group-hover:text-primary transition-colors">Électroménager</h3>
+                    <p class="text-[11px] text-gray-400 font-bold uppercase">9 Boutiques</p>
+                </div>
+            </div>
+
+            <!-- Catégorie 8: Autres -->
+            <div class="bg-white border border-gray-100 rounded-2xl p-6 text-center space-y-4 hover:border-primary hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                <div class="w-14 h-14 bg-gray-50 text-gray-600 rounded-2xl flex items-center justify-center text-2xl mx-auto group-hover:bg-primary group-hover:text-white transition-colors shadow-sm">
+                    <i class="bi bi-three-dots"></i>
+                </div>
+                <div class="space-y-1">
+                    <h3 class="font-black text-secondary text-sm sm:text-base group-hover:text-primary transition-colors">Autres Commerces</h3>
+                    <p class="text-[11px] text-gray-400 font-bold uppercase">15 Boutiques</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 🔏 FOOTER ORANGE ENRICHI -->
+    <footer class="bg-gradient-to-br from-primary to-[#E64A19] text-white py-12 shrink-0 relative overflow-hidden shadow-inner mt-auto">
+        <div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-white/10 pb-8 text-sm">
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Ounmon</h4>
+                    <ul class="space-y-2 font-medium text-orange-50/80">
+                        <li><a href="./index.html" class="hover:text-white transition">Accueil</a></li>
+                        <li><a href="../about.html" class="hover:text-white transition">À propos</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Acheter</h4>
+                    <ul class="space-y-2 font-medium text-orange-50/80">
+                        <li><a href="./track-order.html" class="hover:text-white transition">Suivre ma commande</a></li>
+                        <li><a href="./messages.html" class="hover:text-white transition">Messages</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Commerçants</h4>
+                    <ul class="space-y-2 font-medium text-orange-50/80">
+                        <li><a href="../vendor/auth.html" class="hover:text-white transition">Espace Pro</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-3">
+                    <h4 class="font-black uppercase tracking-wider text-orange-100 text-xs">Réseaux</h4>
+                    <div class="flex gap-4 text-xl pt-1 text-orange-100">
+                        <a href="#" class="hover:text-white transition"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-bold text-orange-100/90">
+                <div class="text-2xl font-black tracking-tight text-white">
+                    Ounmon<span class="text-secondary">.</span>
+                </div>
+                <p>&copy; 2026 Ounmon. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

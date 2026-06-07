@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ounmon Pro - Connexion & Inscription</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- 🌐 BARRE DE NAVIGATION MINIMALISTE -->
+    <nav class="bg-white border-b border-gray-100 h-16 flex items-center px-4 sm:px-8 shrink-0">
+        <a href="../client/index.html" class="text-2xl font-black text-secondary tracking-tight">
+            Ounmon<span class="text-primary">.</span><span class="text-xs align-super font-bold text-orange-500 ml-1">PRO</span>
+        </a>
+    </nav>
+
+    <!-- 🔐 CONTENEUR PRINCIPAL -->
+    <main class="flex-1 flex items-center justify-center p-4 sm:p-8">
+        <div class="w-full max-w-md bg-white border border-gray-100 rounded-3xl shadow-xl overflow-hidden">
+            
+            <!-- Sélecteur d'onglets (Connexion / Inscription) -->
+            <div class="flex border-b border-gray-100 bg-gray-50/50 p-2 gap-2">
+                <button id="tab-login" onclick="switchTab('login')" class="flex-1 text-center py-3 rounded-xl text-xs font-black transition bg-white text-secondary shadow-sm">
+                    Se connecter
+                </button>
+                <button id="tab-register" onclick="switchTab('register')" class="flex-1 text-center py-3 rounded-xl text-xs font-black transition text-gray-400 hover:text-secondary">
+                    Créer une boutique
+                </button>
+            </div>
+
+            <div class="p-6 sm:p-8">
+                
+                <!-- 📥 FORMULAIRE DE CONNEXION -->
+                <form id="form-login" action="dashboard.html" class="space-y-4">
+                    <div class="space-y-1">
+                        <h2 class="text-xl font-black text-secondary">Ravi de vous revoir !</h2>
+                        <p class="text-xs text-gray-400">Accédez à votre espace partenaire et gérez vos ventes.</p>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="space-y-1">
+                            <label class="text-xs font-black text-gray-500 uppercase tracking-wider">Adresse Email</label>
+                            <div class="flex items-center gap-2 border border-gray-200 rounded-xl px-3 bg-gray-50/50 focus-within:border-primary transition">
+                                <i class="bi bi-envelope text-gray-400"></i>
+                                <input type="email" required placeholder="vendeur@cotonou.com" class="w-full py-3 text-xs font-bold bg-transparent focus:outline-none text-secondary">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <div class="flex justify-between items-center">
+                                <label class="text-xs font-black text-gray-500 uppercase tracking-wider">Mot de passe</label>
+                                <a href="#" class="text-[11px] font-bold text-primary hover:underline">Oublié ?</a>
+                            </div>
+                            <div class="flex items-center gap-2 border border-gray-200 rounded-xl px-3 bg-gray-50/50 focus-within:border-primary transition">
+                                <i class="bi bi-lock text-gray-400"></i>
+                                <input type="password" required placeholder="••••••••" class="w-full py-3 text-xs font-bold bg-transparent focus:outline-none text-secondary">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-secondary hover:bg-gray-800 text-white font-black text-xs py-4 rounded-xl transition shadow-lg mt-2">
+                        Connexion à l'Espace Pro
+                    </button>
+                </form>
+
+                <!-- 📤 FORMULAIRE D'INSCRIPTION -->
+                <form id="form-register" action="dashboard.html" class="space-y-4 hidden">
+                    <div class="space-y-1">
+                        <h2 class="text-xl font-black text-secondary">Propulsez votre boutique</h2>
+                        <p class="text-xs text-gray-400">Inscrivez votre commerce et vendez en circuit court.</p>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="space-y-1">
+                            <label class="text-xs font-black text-gray-500 uppercase tracking-wider">Nom de la boutique</label>
+                            <div class="flex items-center gap-2 border border-gray-200 rounded-xl px-3 bg-gray-50/50 focus-within:border-primary transition">
+                                <i class="bi bi-shop text-gray-400"></i>
+                                <input type="text" required placeholder="Ex: Zara Horizon" class="w-full py-3 text-xs font-bold bg-transparent focus:outline-none text-secondary">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="space-y-1">
+                                <label class="text-xs font-black text-gray-500 uppercase tracking-wider">Téléphone WhatsApp</label>
+                                <div class="flex items-center gap-2 border border-gray-200 rounded-xl px-3 bg-gray-50/50 focus-within:border-primary transition">
+                                    <input type="tel" required placeholder="+229 .." class="w-full py-3 text-xs font-bold bg-transparent focus:outline-none text-secondary">
+                                </div>
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-xs font-black text-gray-500 uppercase tracking-wider">Ville</label>
+                                <select class="w-full py-3 px-2 text-xs font-bold bg-gray-50/50 border border-gray-200 rounded-xl focus:outline-none focus:border-primary text-secondary cursor-pointer">
+                                    <option>Cotonou</option>
+                                    <option>Calavi</option>
+                                    <option>Porto-Novo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-black text-gray-500 uppercase tracking-wider">Adresse Email</label>
+                            <div class="flex items-center gap-2 border border-gray-200 rounded-xl px-3 bg-gray-50/50 focus-within:border-primary transition">
+                                <i class="bi bi-envelope text-gray-400"></i>
+                                <input type="email" required placeholder="contact@maboutique.com" class="w-full py-3 text-xs font-bold bg-transparent focus:outline-none text-secondary">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-black text-gray-500 uppercase tracking-wider">Mot de passe</label>
+                            <div class="flex items-center gap-2 border border-gray-200 rounded-xl px-3 bg-gray-50/50 focus-within:border-primary transition">
+                                <i class="bi bi-lock text-gray-400"></i>
+                                <input type="password" required placeholder="Minimum 8 caractères" class="w-full py-3 text-xs font-bold bg-transparent focus:outline-none text-secondary">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-primary hover:bg-opacity-95 text-white font-black text-xs py-4 rounded-xl transition shadow-lg shadow-primary/20 mt-2">
+                        Créer mon compte Partenaire
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- 🔏 FOOTER MINIMAL -->
+    <footer class="bg-white border-t border-gray-100 py-4 text-center text-[11px] text-gray-400 font-medium shrink-0">
+        <p>&copy; 2026 Ounmon Pro. Sécurisé via protocoles locaux.</p>
+    </footer>
+
+    <!-- ⚙️ SCRIPT INTERACTIF POUR LES ONGLETS -->
+    <script>
+        function switchTab(tab) {
+            const loginBtn = document.getElementById('tab-login');
+            const registerBtn = document.getElementById('tab-register');
+            const loginForm = document.getElementById('form-login');
+            const registerForm = document.getElementById('form-register');
+
+            if (tab === 'login') {
+                loginBtn.className = "flex-1 text-center py-3 rounded-xl text-xs font-black transition bg-white text-secondary shadow-sm";
+                registerBtn.className = "flex-1 text-center py-3 rounded-xl text-xs font-black transition text-gray-400 hover:text-secondary";
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                registerBtn.className = "flex-1 text-center py-3 rounded-xl text-xs font-black transition bg-white text-secondary shadow-sm";
+                loginBtn.className = "flex-1 text-center py-3 rounded-xl text-xs font-black transition text-gray-400 hover:text-secondary";
+                registerForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

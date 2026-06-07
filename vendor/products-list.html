@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ounmon Pro - Catalogue de Produits</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- 📱 HEADER MOBILE (Visible uniquement sur Mobile pour ouvrir le menu) -->
+    <header class="bg-secondary text-white p-4 flex items-center justify-between md:hidden shrink-0">
+        <a href="#" class="text-xl font-black tracking-tight">Ounmon<span class="text-primary">.</span> Pro</a>
+        <button onclick="toggleMobileSidebar()" class="text-white text-2xl focus:outline-none">
+            <i class="bi bi-list"></i>
+        </button>
+    </header>
+
+    <!-- 🟪 SIDEBAR DE NAVIGATION (Fixe sur PC, tiroir coulissant sur Mobile) -->
+    <aside id="sidebar" class="hidden md:flex flex-col w-64 bg-secondary text-gray-400 p-6 shrink-0 z-50 fixed inset-y-0 left-0 md:relative md:translate-x-0 transition-transform duration-300">
+        <!-- Bouton fermer sur Mobile -->
+        <button onclick="toggleMobileSidebar()" class="md:hidden text-white absolute top-4 right-4 text-xl"><i class="bi bi-x-lg"></i></button>
+
+        <!-- Logo -->
+        <div class="mb-8 hidden md:block">
+            <a href="dashboard.html" class="text-2xl font-black text-white tracking-tight">
+                Ounmon<span class="text-primary">.</span><span class="text-xs align-super font-medium text-orange-400 ml-1">PRO</span>
+            </a>
+            <p class="text-[10px] text-gray-500 font-bold uppercase mt-1">Espace Partenaire</p>
+        </div>
+
+        <!-- Infos Boutique Connectée -->
+        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl mb-6 border border-white/5">
+            <div class="w-10 h-10 bg-primary text-white font-black rounded-lg flex items-center justify-center text-sm">
+                ZH
+            </div>
+            <div class="overflow-hidden">
+                <p class="text-xs font-bold text-white truncate">Zara Horizon Cotonou</p>
+                <span class="text-[10px] bg-green-500/20 text-green-400 font-bold px-1.5 py-0.5 rounded-full">Boutique Active</span>
+            </div>
+        </div>
+
+        <!-- Liens du Menu (Ici "Mes Produits" devient le lien actif) -->
+        <nav class="flex-1 space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-speedometer2"></i> Vue d'ensemble
+            </a>
+            <a href="#" class="flex items-center gap-3 text-white bg-primary font-bold px-4 py-3 rounded-xl transition text-sm shadow-lg shadow-primary/20">
+                <i class="bi bi-box-seam"></i> Mes Produits (14)
+            </a>
+            <a href="add-product.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-plus-circle"></i> Ajouter un produit
+            </a>
+            <a href="orders.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm relative">
+                <i class="bi bi-receipt"></i> Commandes
+                <span class="absolute right-4 bg-primary text-white text-[10px] font-black h-5 px-1.5 rounded-full flex items-center justify-center">2</span>
+            </a>
+            <a href="billing.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-credit-card"></i> Abonnement & Leads
+            </a>
+        </nav>
+
+        <!-- Déconnexion / Retour au site -->
+        <div class="border-t border-white/5 pt-4 space-y-2">
+            <a href="../index.html" class="flex items-center gap-3 text-xs hover:text-white px-4 py-2 rounded-lg transition">
+                <i class="bi bi-arrow-left"></i> Retour au site client
+            </a>
+        </div>
+    </aside>
+
+    <!-- 📄 CONTENU PRINCIPAL : INVENTAIRE & STOCKS -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6">
+        
+        <!-- En-tête de page -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-black text-secondary">Catalogue Produits</h1>
+                <p class="text-sm text-gray-500">Gérez la visibilité, les stocks et les prix de vos articles en temps réel.</p>
+            </div>
+            <a href="add-product.html" class="bg-primary text-white font-bold text-sm px-5 py-3 rounded-xl hover:bg-opacity-90 transition shadow-lg shadow-primary/20 flex items-center gap-2 self-start sm:self-auto">
+                <i class="bi bi-plus-lg"></i> Mettre un produit en ligne
+            </a>
+        </div>
+
+        <!-- 🔍 BARRE DE FILTRES ET RECHERCHE -->
+        <div class="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col sm:flex-row items-center gap-3 justify-between">
+            <div class="relative w-full sm:w-80">
+                <input type="text" placeholder="Rechercher par nom, catégorie..." class="w-full bg-gray-50 border border-gray-200 rounded-xl py-2.5 pl-9 pr-4 text-xs focus:outline-none focus:border-primary focus:bg-white transition text-secondary font-medium">
+                <i class="bi bi-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+            </div>
+            <div class="flex gap-2 w-full sm:w-auto overflow-x-auto">
+                <button class="bg-secondary text-white text-xs font-bold px-4 py-2 rounded-xl shrink-0">Tous (14)</button>
+                <button class="bg-gray-50 text-gray-600 hover:bg-gray-100 text-xs font-bold px-4 py-2 rounded-xl shrink-0 transition">En Stock</button>
+                <button class="bg-gray-50 text-gray-600 hover:bg-gray-100 text-xs font-bold px-4 py-2 rounded-xl shrink-0 transition">Rupture</button>
+            </div>
+        </div>
+
+        <!-- 📊 GRILLE/TABLE DES PRODUITS -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead>
+                        <tr class="text-xs font-bold text-gray-400 border-b border-gray-100 uppercase bg-gray-50/50">
+                            <th class="p-4 w-20">Visuel</th>
+                            <th class="p-4">Détails Article</th>
+                            <th class="p-4">Catégorie</th>
+                            <th class="p-4">Tarification</th>
+                            <th class="p-4">Quantité</th>
+                            <th class="p-4">Visibilité</th>
+                            <th class="p-4 text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 font-medium text-gray-700">
+                        
+                        <!-- Article 1 : Actif -->
+                        <tr class="hover:bg-gray-50/50 transition">
+                            <td class="p-4">
+                                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-[9px] font-bold border border-gray-200 italic shadow-sm">[Img]</div>
+                            </td>
+                            <td class="p-4">
+                                <p class="font-bold text-secondary text-xs sm:text-sm">Sneakers Air Force Orange Edition</p>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Variantes : <span class="text-gray-600 font-bold">39, 40, 42</span></p>
+                            </td>
+                            <td class="p-4 text-xs font-bold text-gray-500">Chaussures</td>
+                            <td class="p-4">
+                                <p class="text-xs font-black text-secondary">24 500 F</p>
+                                <p class="text-[10px] text-gray-400 line-through">28 000 F</p>
+                            </td>
+                            <td class="p-4">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                    <span class="text-xs font-bold text-secondary">10 dispo.</span>
+                                </div>
+                            </td>
+                            <td class="p-4">
+                                <!-- Commutateur (Toggle) d'activation en ligne -->
+                                <button onclick="alert('Disponibilité du produit modifiée')" class="w-9 h-5 bg-primary rounded-full p-0.5 transition duration-200 focus:outline-none flex items-center">
+                                    <div class="bg-white w-4 h-4 rounded-full shadow-md transform translate-x-4 transition-transform duration-200"></div>
+                                </button>
+                            </td>
+                            <td class="p-4 text-center">
+                                <div class="flex items-center justify-center gap-2">
+                                    <button onclick="alert('Modifier l\'article')" class="w-8 h-8 rounded-lg bg-gray-50 hover:bg-orange-50 text-gray-500 hover:text-primary transition flex items-center justify-center" title="Modifier">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button onclick="confirm('Supprimer cet article définitivement ?')" class="w-8 h-8 rounded-lg bg-gray-50 hover:bg-red-50 text-gray-500 hover:text-red-500 transition flex items-center justify-center" title="Supprimer">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Article 2 : Actif -->
+                        <tr class="hover:bg-gray-50/50 transition">
+                            <td class="p-4">
+                                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-[9px] font-bold border border-gray-200 italic shadow-sm">[Img]</div>
+                            </td>
+                            <td class="p-4">
+                                <p class="font-bold text-secondary text-xs sm:text-sm">Talons Prestige Daim Noir</p>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Variantes : <span class="text-gray-600 font-bold">38</span></p>
+                            </td>
+                            <td class="p-4 text-xs font-bold text-gray-500">Chaussures</td>
+                            <td class="p-4">
+                                <p class="text-xs font-black text-secondary">32 000 F</p>
+                            </td>
+                            <td class="p-4">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                                    <span class="text-xs font-bold text-secondary">4 dispo.</span>
+                                </div>
+                            </td>
+                            <td class="p-4">
+                                <button onclick="alert('Disponibilité du produit modifiée')" class="w-9 h-5 bg-primary rounded-full p-0.5 transition duration-200 focus:outline-none flex items-center">
+                                    <div class="bg-white w-4 h-4 rounded-full shadow-md transform translate-x-4 transition-transform duration-200"></div>
+                                </button>
+                            </td>
+                            <td class="p-4 text-center">
+                                <div class="flex items-center justify-center gap-2">
+                                    <button onclick="alert('Modifier l\'article')" class="w-8 h-8 rounded-lg bg-gray-50 hover:bg-orange-50 text-gray-500 hover:text-primary transition flex items-center justify-center"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="confirm('Supprimer cet article définitivement ?')" class="w-8 h-8 rounded-lg bg-gray-50 hover:bg-red-50 text-gray-500 hover:text-red-500 transition flex items-center justify-center"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- Article 3 : Désactivé / Rupture volontaire -->
+                        <tr class="hover:bg-gray-50/50 transition bg-gray-50/40 opacity-70">
+                            <td class="p-4">
+                                <div class="w-12 h-12 bg-gray-200 rounded-xl flex items-center justify-center text-gray-400 text-[9px] font-bold border border-gray-300 italic shadow-sm">[Img]</div>
+                            </td>
+                            <td class="p-4">
+                                <p class="font-bold text-gray-500 text-xs sm:text-sm line-through">Robe d'été Fleurie Premium</p>
+                                <p class="text-[11px] text-gray-400 mt-0.5">Aucune variante sélectionnée</p>
+                            </td>
+                            <td class="p-4 text-xs font-bold text-gray-400">Vêtements & Mode</td>
+                            <td class="p-4">
+                                <p class="text-xs font-black text-gray-500">18 500 F</p>
+                            </td>
+                            <td class="p-4">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                                    <span class="text-xs font-bold text-gray-400">0 (Épuisé)</span>
+                                </div>
+                            </td>
+                            <td class="p-4">
+                                <!-- Commutateur éteint (Grisé) -->
+                                <button onclick="alert('Produit réactivé en ligne')" class="w-9 h-5 bg-gray-200 rounded-full p-0.5 transition duration-200 focus:outline-none flex items-center">
+                                    <div class="bg-white w-4 h-4 rounded-full shadow-md transform translate-x-0 transition-transform duration-200"></div>
+                                </button>
+                            </td>
+                            <td class="p-4 text-center">
+                                <div class="flex items-center justify-center gap-2">
+                                    <button onclick="alert('Modifier l\'article')" class="w-8 h-8 rounded-lg bg-gray-50 hover:bg-orange-50 text-gray-500 hover:text-primary transition flex items-center justify-center"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="confirm('Supprimer cet article définitivement ?')" class="w-8 h-8 rounded-lg bg-gray-50 hover:bg-red-50 text-gray-500 hover:text-red-500 transition flex items-center justify-center"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination de la table -->
+            <div class="p-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-gray-500 bg-gray-50/30">
+                <p>Affichage de 3 sur 14 articles</p>
+                <div class="flex gap-1.5">
+                    <button class="px-3 py-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition disabled:opacity-50" disabled><i class="bi bi-chevron-left"></i> Précédent</button>
+                    <button class="px-3 py-1.5 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition">Suivant <i class="bi bi-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ⚙️ SCRIPT RESPONSIVE SIDEBAR MENU MOBILE (Identique à add-product & dashboard) -->
+    <script>
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                sidebar.classList.add('block', 'translate-x-0');
+            } else {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('block', 'translate-x-0');
+            }
+        }
+    </script>
+</body>
+</html>

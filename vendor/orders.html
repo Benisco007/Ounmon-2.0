@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ounmon Pro - Gestion des Commandes</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- 📱 HEADER MOBILE (Visible uniquement sur Mobile pour ouvrir le menu) -->
+    <header class="bg-secondary text-white p-4 flex items-center justify-between md:hidden shrink-0">
+        <a href="#" class="text-xl font-black tracking-tight">Ounmon<span class="text-primary">.</span> Pro</a>
+        <button onclick="toggleMobileSidebar()" class="text-white text-2xl focus:outline-none">
+            <i class="bi bi-list"></i>
+        </button>
+    </header>
+
+    <!-- 🟪 SIDEBAR DE NAVIGATION -->
+    <aside id="sidebar" class="hidden md:flex flex-col w-64 bg-secondary text-gray-400 p-6 shrink-0 z-50 fixed inset-y-0 left-0 md:relative md:translate-x-0 transition-transform duration-300">
+        <!-- Bouton fermer sur Mobile -->
+        <button onclick="toggleMobileSidebar()" class="md:hidden text-white absolute top-4 right-4 text-xl"><i class="bi bi-x-lg"></i></button>
+
+        <!-- Logo -->
+        <div class="mb-8 hidden md:block">
+            <a href="dashboard.html" class="text-2xl font-black text-white tracking-tight">
+                Ounmon<span class="text-primary">.</span><span class="text-xs align-super font-medium text-orange-400 ml-1">PRO</span>
+            </a>
+            <p class="text-[10px] text-gray-500 font-bold uppercase mt-1">Espace Partenaire</p>
+        </div>
+
+        <!-- Infos Boutique Connectée -->
+        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl mb-6 border border-white/5">
+            <div class="w-10 h-10 bg-primary text-white font-black rounded-lg flex items-center justify-center text-sm">
+                ZH
+            </div>
+            <div class="overflow-hidden">
+                <p class="text-xs font-bold text-white truncate">Zara Horizon Cotonou</p>
+                <span class="text-[10px] bg-green-500/20 text-green-400 font-bold px-1.5 py-0.5 rounded-full">Boutique Active</span>
+            </div>
+        </div>
+
+        <!-- Liens du Menu (Ici "Commandes" devient le lien actif) -->
+        <nav class="flex-1 space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-speedometer2"></i> Vue d'ensemble
+            </a>
+            <a href="products-list.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-box-seam"></i> Mes Produits (14)
+            </a>
+            <a href="add-product.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-plus-circle"></i> Ajouter un produit
+            </a>
+            <a href="#" class="flex items-center gap-3 text-white bg-primary font-bold px-4 py-3 rounded-xl transition text-sm shadow-lg shadow-primary/20 relative">
+                <i class="bi bi-receipt"></i> Commandes
+                <span class="absolute right-4 bg-white text-primary text-[10px] font-black h-5 px-1.5 rounded-full flex items-center justify-center">2</span>
+            </a>
+            <a href="billing.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-credit-card"></i> Abonnement & Leads
+            </a>
+        </nav>
+
+        <!-- Déconnexion / Retour au site -->
+        <div class="border-t border-white/5 pt-4 space-y-2">
+            <a href="../index.html" class="flex items-center gap-3 text-xs hover:text-white px-4 py-2 rounded-lg transition">
+                <i class="bi bi-arrow-left"></i> Retour au site client
+            </a>
+        </div>
+    </aside>
+
+    <!-- 📄 CONTENU PRINCIPAL : LISTE ET SUIVI DES COMMANDES -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6">
+        
+        <!-- En-tête de page -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-black text-secondary">Suivi des commandes</h1>
+                <p class="text-sm text-gray-500">Traitez les demandes de vos clients et mettez à jour leur mode de livraison.</p>
+            </div>
+        </div>
+
+        <!-- 📊 FILTRES DE STATUTS -->
+        <div class="flex gap-2 overflow-x-auto pb-1">
+            <button class="bg-secondary text-white text-xs font-bold px-4 py-2.5 rounded-xl shrink-0">Toutes (48)</button>
+            <button class="bg-white text-yellow-600 hover:bg-gray-50 border border-gray-200 text-xs font-bold px-4 py-2.5 rounded-xl shrink-0 transition flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-yellow-500"></span> En attente (2)
+            </button>
+            <button class="bg-white text-orange-600 hover:bg-gray-50 border border-gray-200 text-xs font-bold px-4 py-2.5 rounded-xl shrink-0 transition flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-orange-500"></span> En préparation (1)
+            </button>
+            <button class="bg-white text-blue-600 hover:bg-gray-50 border border-gray-200 text-xs font-bold px-4 py-2.5 rounded-xl shrink-0 transition flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-blue-500"></span> En route (3)
+            </button>
+            <button class="bg-white text-green-600 hover:bg-gray-50 border border-gray-200 text-xs font-bold px-4 py-2.5 rounded-xl shrink-0 transition flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span> Livrées (42)
+            </button>
+        </div>
+
+        <!-- 📦 LISTE DES COMMANDES (Format cartes denses et scannables) -->
+        <div class="space-y-4">
+            
+            <!-- Commande 1 : En attente -->
+            <div class="bg-white border-l-4 border-yellow-500 rounded-2xl p-5 border border-gray-100 shadow-sm space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-50 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-black text-secondary bg-gray-100 px-2.5 py-1 rounded-md">CMD-#1048</span>
+                        <span class="text-[11px] font-bold text-yellow-600 bg-yellow-50 px-2 py-0.5 rounded">Nouveau / En attente</span>
+                    </div>
+                    <span class="text-xs text-gray-400 font-medium">Aujourd'hui à 14:22</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                    <!-- Infos Produit -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 text-[10px] font-bold border border-gray-100 shrink-0">[AF]</div>
+                        <div>
+                            <h4 class="text-xs font-black text-secondary">Sneakers Air Force Orange Edition</h4>
+                            <p class="text-[11px] text-gray-400 mt-0.5">Qté : <span class="font-bold text-secondary">1</span> | Taille : <span class="font-bold text-secondary">42</span></p>
+                        </div>
+                    </div>
+                    <!-- Infos Client et Type -->
+                    <div class="space-y-1">
+                        <p class="text-xs font-bold text-secondary">Marc K. <span class="text-[10px] font-bold bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded ml-1"><i class="bi bi-scooter"></i> Livraison</span></p>
+                        <p class="text-[11px] text-gray-500 truncate"><i class="bi bi-geo-alt"></i> Fidjrossè, Camp Guezo, Cotonou</p>
+                    </div>
+                    <!-- Prix & Statut Dynamique -->
+                    <div class="flex items-center justify-between md:justify-end gap-6">
+                        <div class="md:text-right">
+                            <p class="text-[10px] text-gray-400 uppercase font-bold">Total à percevoir</p>
+                            <p class="text-base font-black text-primary">24 500 F</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="alert('Redirection WhatsApp Client')" class="w-9 h-9 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-600 transition flex items-center justify-center text-base" title="Contacter par WhatsApp">
+                                <i class="bi bi-whatsapp"></i>
+                            </button>
+                            <button onclick="alert('Commande validée !')" class="bg-primary hover:bg-opacity-90 text-white font-black text-xs px-4 py-2 rounded-xl transition shadow-sm">
+                                Valider
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commande 2 : En préparation -->
+            <div class="bg-white border-l-4 border-orange-500 rounded-2xl p-5 border border-gray-100 shadow-sm space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-50 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-black text-secondary bg-gray-100 px-2.5 py-1 rounded-md">CMD-#1047</span>
+                        <span class="text-[11px] font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">En préparation</span>
+                    </div>
+                    <span class="text-xs text-gray-400 font-medium">Hier à 18:05</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                    <!-- Infos Produit -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 text-[10px] font-bold border border-gray-100 shrink-0">[TP]</div>
+                        <div>
+                            <h4 class="text-xs font-black text-secondary">Talons Prestige Daim Noir</h4>
+                            <p class="text-[11px] text-gray-400 mt-0.5">Qté : <span class="font-bold text-secondary">1</span> | Taille : <span class="font-bold text-secondary">38</span></p>
+                        </div>
+                    </div>
+                    <!-- Infos Client et Type -->
+                    <div class="space-y-1">
+                        <p class="text-xs font-bold text-secondary">Amina Z. <span class="text-[10px] font-bold bg-purple-50 text-purple-600 px-1.5 py-0.5 rounded ml-1"><i class="bi bi-shop"></i> Retrait Magasin</span></p>
+                        <p class="text-[11px] text-gray-500 truncate"><i class="bi bi-clock"></i> Passage prévu samedi matin</p>
+                    </div>
+                    <!-- Sélecteur d'étape et actions -->
+                    <div class="flex items-center justify-between md:justify-end gap-6">
+                        <div class="md:text-right">
+                            <p class="text-[10px] text-gray-400 uppercase font-bold">Total</p>
+                            <p class="text-base font-black text-secondary">32 000 F</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <select onchange="alert('Statut mis à jour')" class="text-xs font-bold p-2 rounded-xl bg-gray-50 border border-gray-200 text-secondary focus:outline-none cursor-pointer">
+                                <option value="preparing" selected>En préparation</option>
+                                <option value="shipping">Prêt / En route</option>
+                                <option value="delivered">Prêt pour retrait</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commande 3 : Livrée / Archivée -->
+            <div class="bg-white border-l-4 border-green-500 rounded-2xl p-5 border border-gray-100 shadow-sm space-y-4 opacity-75 hover:opacity-100 transition">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-50 pb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-black text-secondary bg-gray-100 px-2.5 py-1 rounded-md">CMD-#1042</span>
+                        <span class="text-[11px] font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded">Livrée avec succès</span>
+                    </div>
+                    <span class="text-xs text-gray-400 font-medium">Le 04/06/2026</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 text-[10px] font-bold border border-gray-100 shrink-0">[AF]</div>
+                        <div>
+                            <h4 class="text-xs font-medium text-gray-500 line-through">Sneakers Air Force Orange Edition</h4>
+                            <p class="text-[11px] text-gray-400 mt-0.5">Qté : 1 | Taille : 40</p>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-xs font-bold text-gray-600">Jean-Luc M.</p>
+                        <p class="text-[11px] text-gray-400"><i class="bi bi-check2-all text-green-500"></i> Reçue et encaissée</p>
+                    </div>
+                    <div class="flex items-center justify-between md:justify-end gap-6">
+                        <div class="md:text-right">
+                            <p class="text-base font-black text-gray-400">24 500 F</p>
+                        </div>
+                        <button onclick="alert('Ouverture du récapitulatif')" class="w-9 h-9 rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-400 hover:text-secondary transition flex items-center justify-center text-sm" title="Voir les détails">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ⚙️ SCRIPT RESPONSIVE SIDEBAR MENU MOBILE -->
+    <script>
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                sidebar.classList.add('block', 'translate-x-0');
+            } else {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('block', 'translate-x-0');
+            }
+        }
+    </script>
+</body>
+</html>

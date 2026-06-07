@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ounmon Pro - Abonnement & Leads</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- 📱 HEADER MOBILE -->
+    <header class="bg-secondary text-white p-4 flex items-center justify-between md:hidden shrink-0">
+        <a href="#" class="text-xl font-black tracking-tight">Ounmon<span class="text-primary">.</span> Pro</a>
+        <button onclick="toggleMobileSidebar()" class="text-white text-2xl focus:outline-none">
+            <i class="bi bi-list"></i>
+        </button>
+    </header>
+
+    <!-- 🟪 SIDEBAR DE NAVIGATION -->
+    <aside id="sidebar" class="hidden md:flex flex-col w-64 bg-secondary text-gray-400 p-6 shrink-0 z-50 fixed inset-y-0 left-0 md:relative md:translate-x-0 transition-transform duration-300">
+        <!-- Bouton fermer sur Mobile -->
+        <button onclick="toggleMobileSidebar()" class="md:hidden text-white absolute top-4 right-4 text-xl"><i class="bi bi-x-lg"></i></button>
+
+        <!-- Logo -->
+        <div class="mb-8 hidden md:block">
+            <a href="dashboard.html" class="text-2xl font-black text-white tracking-tight">
+                Ounmon<span class="text-primary">.</span><span class="text-xs align-super font-medium text-orange-400 ml-1">PRO</span>
+            </a>
+            <p class="text-[10px] text-gray-500 font-bold uppercase mt-1">Espace Partenaire</p>
+        </div>
+
+        <!-- Infos Boutique Connectée -->
+        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl mb-6 border border-white/5">
+            <div class="w-10 h-10 bg-primary text-white font-black rounded-lg flex items-center justify-center text-sm">
+                ZH
+            </div>
+            <div class="overflow-hidden">
+                <p class="text-xs font-bold text-white truncate">Zara Horizon Cotonou</p>
+                <span class="text-[10px] bg-green-500/20 text-green-400 font-bold px-1.5 py-0.5 rounded-full">Boutique Active</span>
+            </div>
+        </div>
+
+        <!-- Liens du Menu (Ici "Abonnement & Leads" devient actif) -->
+        <nav class="flex-1 space-y-1">
+            <a href="dashboard.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-speedometer2"></i> Vue d'ensemble
+            </a>
+            <a href="inventory.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-box-seam"></i> Mes Produits (14)
+            </a>
+            <a href="add-product.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-plus-circle"></i> Ajouter un produit
+            </a>
+            <a href="orders.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm relative">
+                <i class="bi bi-receipt"></i> Commandes
+                <span class="absolute right-4 bg-primary text-white text-[10px] font-black h-5 px-1.5 rounded-full flex items-center justify-center">2</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 text-white bg-primary font-bold px-4 py-3 rounded-xl transition text-sm shadow-lg shadow-primary/20">
+                <i class="bi bi-credit-card"></i> Abonnement & Leads
+            </a>
+        </nav>
+
+        <!-- Déconnexion / Retour au site -->
+        <div class="border-t border-white/5 pt-4 space-y-2">
+            <a href="../index.html" class="flex items-center gap-3 text-xs hover:text-white px-4 py-2 rounded-lg transition">
+                <i class="bi bi-arrow-left"></i> Retour au site client
+            </a>
+        </div>
+    </aside>
+
+    <!-- 📄 CONTENU PRINCIPAL : ABONNEMENT ET FACTURATION -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6">
+        
+        <!-- En-tête de page -->
+        <div class="border-b border-gray-200 pb-4">
+            <h1 class="text-2xl sm:text-3xl font-black text-secondary">Abonnement & Facturation</h1>
+            <p class="text-sm text-gray-500">Suivez l'état de votre offre, vos crédits de visibilité et l'historique de vos reçus.</p>
+        </div>
+
+        <!-- 📊 GRILLE DE STATUT ABONNEMENT -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Carte Offre Actuelle -->
+            <div class="bg-secondary text-white p-6 rounded-2xl shadow-sm space-y-4 flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] uppercase font-black bg-primary/20 text-orange-400 px-2 py-1 rounded-md">Formule Active</span>
+                    <h3 class="text-xl font-black mt-2">Ounmon Pro Premium</h3>
+                    <p class="text-xs text-gray-400 mt-1">Idéal pour booster sa boutique locale et capter des clients qualifiés.</p>
+                </div>
+                <div>
+                    <p class="text-2xl font-black text-white">15 000 F <span class="text-xs font-normal text-gray-400">/ mois</span></p>
+                    <p class="text-[11px] text-green-400 font-medium mt-1"><i class="bi bi-calendar-check"></i> Renouvellement automatique le 01/07/2026</p>
+                </div>
+                <button onclick="alert('Changement de forfait')" class="w-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs py-3 rounded-xl transition border border-white/5">
+                    Changer de forfait
+                </button>
+            </div>
+
+            <!-- Jauge d'utilisation des Leads (Clics WhatsApp générés) -->
+            <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm space-y-4 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] uppercase font-black bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md">Consommation Leads</span>
+                            <h3 class="text-xl font-black text-secondary mt-2">184 / 300</h3>
+                        </div>
+                        <i class="bi bi-whatsapp text-emerald-500 text-2xl"></i>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2">Nombre de redirection clients vers votre WhatsApp ce mois-ci.</p>
+                </div>
+                <!-- Jauge Graphique de Remplissage -->
+                <div class="space-y-1">
+                    <div class="w-full bg-gray-100 h-2.5 rounded-full overflow-hidden">
+                        <div class="bg-emerald-500 h-full rounded-full" style="width: 61%"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] font-bold text-gray-400">
+                        <span>61% consommés</span>
+                        <span>116 restants</span>
+                    </div>
+                </div>
+                <button onclick="alert('Recharger des crédits supplémentaires')" class="w-full bg-gray-50 hover:bg-gray-100 text-secondary font-bold text-xs py-3 rounded-xl transition border border-gray-200">
+                    Acheter des leads supplémentaires
+                </button>
+            </div>
+
+            <!-- Mode de Paiement Configuration -->
+            <div class="bg-white border border-gray-100 p-6 rounded-2xl shadow-sm space-y-4 flex flex-col justify-between">
+                <div>
+                    <span class="text-[10px] uppercase font-black bg-blue-50 text-blue-600 px-2 py-1 rounded-md">Mode de prélèvement</span>
+                    <h3 class="text-lg font-black text-secondary mt-2">Mobile Money Bénin</h3>
+                    <p class="text-xs text-gray-500 mt-1">Compte associé pour le prélèvement des forfaits mensuels.</p>
+                </div>
+                <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-xl border border-gray-100">
+                    <div class="w-9 h-9 bg-yellow-500 rounded-lg flex items-center justify-center font-black text-white text-xs shrink-0">MoMo</div>
+                    <div class="overflow-hidden">
+                        <p class="text-xs font-bold text-secondary truncate">MTN Mobile Money</p>
+                        <p class="text-[11px] text-gray-400 font-mono">+229 61 XX XX 89</p>
+                    </div>
+                </div>
+                <button onclick="alert('Modifier le compte MoMo/Flooz')" class="w-full bg-gray-50 hover:bg-gray-100 text-secondary font-bold text-xs py-3 rounded-xl transition border border-gray-200">
+                    Mettre à jour le numéro
+                </button>
+            </div>
+
+        </div>
+
+        <!-- 📑 HISTORIQUE DES FACTURES -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="p-5 border-b border-gray-100">
+                <h3 class="text-sm font-black text-secondary">Historique de facturation</h3>
+                <p class="text-xs text-gray-500 mt-0.5">Retrouvez et téléchargez vos reçus de paiement.</p>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead>
+                        <tr class="text-xs font-bold text-gray-400 border-b border-gray-100 uppercase bg-gray-50/50">
+                            <th class="p-4">Référence</th>
+                            <th class="p-4">Date de paiement</th>
+                            <th class="p-4">Désignation / Type</th>
+                            <th class="p-4">Montant</th>
+                            <th class="p-4">Mode</th>
+                            <th class="p-4">Statut</th>
+                            <th class="p-4 text-center">Reçu</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100 font-medium text-gray-700 text-xs sm:text-sm">
+                        
+                        <!-- Facture 1 -->
+                        <tr class="hover:bg-gray-50/50 transition">
+                            <td class="p-4 font-bold text-secondary">FAC-2026-0601</td>
+                            <td class="p-4 text-gray-500 font-medium">01 Juin 2026</td>
+                            <td class="p-4">
+                                <p class="font-bold text-secondary">Forfait Mensuel Premium</p>
+                                <p class="text-[10px] text-gray-400">Période du 01/06 au 30/06</p>
+                            </td>
+                            <td class="p-4 font-black text-secondary">15 000 F CFA</td>
+                            <td class="p-4 text-xs font-bold text-gray-500">MTN MoMo</td>
+                            <td class="p-4">
+                                <span class="bg-green-50 text-green-600 font-bold px-2 py-0.5 rounded text-[11px]">Payé</span>
+                            </td>
+                            <td class="p-4 text-center">
+                                <button onclick="alert('Téléchargement du PDF')" class="w-8 h-8 rounded-lg bg-gray-50 hover:bg-orange-50 text-gray-400 hover:text-primary transition flex items-center justify-center mx-auto" title="Télécharger le reçu">
+                                    <i class="bi bi-download"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Facture 2 -->
+                        <tr class="hover:bg-gray-50/50 transition">
+                            <td class="p-4 font-bold text-secondary">FAC-2026-0518</td>
+                            <td class="p-4 text-gray-500 font-medium">18 Mai 2026</td>
+                            <td class="p-4">
+                                <p class="font-bold text-secondary">Recharge Pack 50 Leads</p>
+                                <p class="text-[10px] text-gray-400">Ajout manuel de crédits de clics</p>
+                            </td>
+                            <td class="p-4 font-black text-secondary">3 500 F CFA</td>
+                            <td class="p-4 text-xs font-bold text-gray-500">Moov Money</td>
+                            <td class="p-4">
+                                <span class="bg-green-50 text-green-600 font-bold px-2 py-0.5 rounded text-[11px]">Payé</span>
+                            </td>
+                            <td class="p-4 text-center">
+                                <button onclick="alert('Téléchargement du PDF')" class="w-8 h-8 rounded-lg bg-gray-50 hover:bg-orange-50 text-gray-400 hover:text-primary transition flex items-center justify-center mx-auto"><i class="bi bi-download"></i></button>
+                            </td>
+                        </tr>
+
+                        <!-- Facture 3 -->
+                        <tr class="hover:bg-gray-50/50 transition">
+                            <td class="p-4 font-bold text-secondary">FAC-2026-0501</td>
+                            <td class="p-4 text-gray-500 font-medium">01 Mai 2026</td>
+                            <td class="p-4">
+                                <p class="font-bold text-secondary">Forfait Mensuel Premium</p>
+                                <p class="text-[10px] text-gray-400">Période du 01/05 au 31/05</p>
+                            </td>
+                            <td class="p-4 font-black text-secondary">15 000 F CFA</td>
+                            <td class="p-4 text-xs font-bold text-gray-500">MTN MoMo</td>
+                            <td class="p-4">
+                                <span class="bg-green-50 text-green-600 font-bold px-2 py-0.5 rounded text-[11px]">Payé</span>
+                            </td>
+                            <td class="p-4 text-center">
+                                <button onclick="alert('Téléchargement du PDF')" class="w-8 h-8 rounded-lg bg-gray-50 hover:bg-orange-50 text-gray-400 hover:text-primary transition flex items-center justify-center mx-auto"><i class="bi bi-download"></i></button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ⚙️ SCRIPT RESPONSIVE SIDEBAR MENU MOBILE -->
+    <script>
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                sidebar.classList.add('block', 'translate-x-0');
+            } else {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('block', 'translate-x-0');
+            }
+        }
+    </script>
+</body>
+</html>

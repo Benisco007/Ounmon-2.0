@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ounmon Pro - Tableau de bord Vendeur</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- 📱 HEADER MOBILE (Visible uniquement sur Mobile pour ouvrir le menu) -->
+    <header class="bg-secondary text-white p-4 flex items-center justify-between md:hidden shrink-0">
+        <a href="#" class="text-xl font-black tracking-tight">Ounmon<span class="text-primary">.</span> Pro</a>
+        <button onclick="toggleMobileSidebar()" class="text-white text-2xl focus:outline-none">
+            <i class="bi bi-list"></i>
+        </button>
+    </header>
+
+    <!-- 🟪 SIDEBAR DE NAVIGATION (Fixe sur PC, tiroir coulissant sur Mobile) -->
+    <aside id="sidebar" class="hidden md:flex flex-col w-64 bg-secondary text-gray-400 p-6 shrink-0 z-50 fixed inset-y-0 left-0 md:relative md:translate-x-0 transition-transform duration-300">
+        <!-- Bouton fermer sur Mobile -->
+        <button onclick="toggleMobileSidebar()" class="md:hidden text-white absolute top-4 right-4 text-xl"><i class="bi bi-x-lg"></i></button>
+
+        <!-- Logo -->
+        <div class="mb-8 hidden md:block">
+            <a href="#" class="text-2xl font-black text-white tracking-tight">
+                Ounmon<span class="text-primary">.</span><span class="text-xs align-super font-medium text-orange-400 ml-1">PRO</span>
+            </a>
+            <p class="text-[10px] text-gray-500 font-bold uppercase mt-1">Espace Partenaire</p>
+        </div>
+
+        <!-- Infos Boutique Connectée -->
+        <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl mb-6 border border-white/5">
+            <div class="w-10 h-10 bg-primary text-white font-black rounded-lg flex items-center justify-center text-sm">
+                ZH
+            </div>
+            <div class="overflow-hidden">
+                <p class="text-xs font-bold text-white truncate">Zara Horizon Cotonou</p>
+                <span class="text-[10px] bg-green-500/20 text-green-400 font-bold px-1.5 py-0.5 rounded-full">Boutique Active</span>
+            </div>
+        </div>
+
+        <!-- Liens du Menu -->
+        <nav class="flex-1 space-y-1">
+            <a href="#" class="flex items-center gap-3 text-white bg-primary font-bold px-4 py-3 rounded-xl transition text-sm shadow-lg shadow-primary/20">
+                <i class="bi bi-speedometer2"></i> Vue d'ensemble
+            </a>
+            <a href="products-list.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-box-seam"></i> Mes Produits (14)
+            </a>
+            <a href="add-product.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-plus-circle"></i> Ajouter un produit
+            </a>
+            <a href="orders.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm relative">
+                <i class="bi bi-receipt"></i> Commandes
+                <span class="absolute right-4 bg-primary text-white text-[10px] font-black h-5 px-1.5 rounded-full flex items-center justify-center">2</span>
+            </a>
+            <a href="billing.html" class="flex items-center gap-3 hover:text-white hover:bg-white/5 px-4 py-3 rounded-xl transition text-sm">
+                <i class="bi bi-credit-card"></i> Abonnement & Leads
+            </a>
+        </nav>
+
+        <!-- Déconnexion / Retour au site -->
+        <div class="border-t border-white/5 pt-4 space-y-2">
+            <a href="../index.html" class="flex items-center gap-3 text-xs hover:text-white px-4 py-2 rounded-lg transition">
+                <i class="bi bi-arrow-left"></i> Retour au site client
+            </a>
+        </div>
+    </aside>
+
+    <!-- 📊 ZONE DU CONTENU PRINCIPAL (Défilable) -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-8 space-y-6">
+        
+        <!-- Titre de la page et Message de bienvenue -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-2xl sm:text-3xl font-black text-secondary">Tableau de bord</h1>
+                <p class="text-sm text-gray-500">Voici les performances de votre boutique pour le mois en cours.</p>
+            </div>
+            <!-- Bouton d'action rapide -->
+            <a href="add-product.html" class="bg-primary text-white font-bold text-sm px-5 py-3 rounded-xl hover:bg-opacity-90 transition shadow-lg shadow-primary/20 flex items-center gap-2 self-start sm:self-auto">
+                <i class="bi bi-plus-lg"></i> Mettre un produit en ligne
+            </a>
+        </div>
+
+        <!-- 🧲 SECTION 1 : ALERTE ABONNEMENT & FACTURATION DU LEAD -->
+        <section class="bg-gradient-to-r from-orange-500 to-primary text-white p-6 rounded-2xl shadow-md flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div class="space-y-2">
+                <span class="bg-white/20 text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full">Mode de facturation : Par Client Envoyé</span>
+                <h2 class="text-xl font-black">Votre compteur de Performance Ounmon</h2>
+                <p class="text-sm text-orange-100 max-w-xl">Chaque clic d'un acheteur vers votre profil ou votre numéro WhatsApp génère 1 lead. Vous payez à la fin du mois selon le volume réel de clients reçus.</p>
+            </div>
+            <!-- Bloc Chiffre Lead -->
+            <div class="bg-white/10 p-4 rounded-xl border border-white/10 text-center shrink-0 flex items-center lg:flex-col justify-between gap-4 lg:gap-0 min-w-[180px]">
+                <div>
+                    <p class="text-xs text-orange-100 font-bold uppercase">Leads ce mois</p>
+                    <p class="text-3xl font-black mt-0.5">342 <span class="text-xs font-normal text-orange-200">visites</span></p>
+                </div>
+                <div class="lg:mt-3 text-right lg:text-center">
+                    <p class="text-[10px] text-orange-200">Facturation estimée</p>
+                    <p class="text-sm font-bold text-white">6 840 FCFA</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 📈 SECTION 2 : CARTES DE STATISTIQUES (GRID RESPONSIVE) -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <!-- Stat 1 : Chiffre d'Affaire simulé -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                <div class="space-y-1">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Commandes reçues</p>
+                    <p class="text-2xl font-black text-secondary">48</p>
+                    <span class="text-xs text-green-500 font-bold"><i class="bi bi-arrow-up-short"></i> +12% vs mois dernier</span>
+                </div>
+                <div class="w-12 h-12 bg-orange-50 text-primary rounded-xl flex items-center justify-center text-xl"><i class="bi bi-cart-check"></i></div>
+            </div>
+            
+            <!-- Stat 2 : Visiteurs uniques -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                <div class="space-y-1">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Vues Produits</p>
+                    <p class="text-2xl font-black text-secondary">1 240</p>
+                    <span class="text-xs text-green-500 font-bold"><i class="bi bi-arrow-up-short"></i> +24%</span>
+                </div>
+                <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-xl flex items-center justify-center text-xl"><i class="bi bi-eye"></i></div>
+            </div>
+
+            <!-- Stat 3 : Note de la boutique -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                <div class="space-y-1">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Avis Clients</p>
+                    <p class="text-2xl font-black text-secondary">4.7 <span class="text-xs font-normal text-gray-400">/5</span></p>
+                    <div class="text-yellow-500 text-xs"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+                </div>
+                <div class="w-12 h-12 bg-yellow-50 text-yellow-500 rounded-xl flex items-center justify-center text-xl"><i class="bi bi-star"></i></div>
+            </div>
+
+            <!-- Stat 4 : Statut de l'abonnement mensuel -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                <div class="space-y-1">
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Abonnement Fixe</p>
+                    <p class="text-sm font-black text-green-600 bg-green-50 px-2.5 py-1 rounded-md inline-block">Payé & À jour</p>
+                    <p class="text-[11px] text-gray-400 pt-1">Expire le 30/06/2026</p>
+                </div>
+                <div class="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center text-xl"><i class="bi bi-shield-check"></i></div>
+            </div>
+        </section>
+
+        <!-- 📦 SECTION 3 : DEUX BLOCS (Dernières commandes + Produits Vedettes) -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Bloc Commandes Récentes (Prend 2 colonnes sur 3 sur PC) -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm lg:col-span-2 space-y-4">
+                <div class="flex items-center justify-between border-b border-gray-50 pb-3">
+                    <h3 class="font-black text-secondary text-base">Commandes récentes à traiter</h3>
+                    <a href="orders.html" class="text-xs font-bold text-primary hover:underline">Gérer tout</a>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm border-collapse">
+                        <thead>
+                            <tr class="text-xs font-bold text-gray-400 border-b border-gray-100 uppercase">
+                                <th class="pb-3">Client</th>
+                                <th class="pb-3">Produit</th>
+                                <th class="pb-3">Option</th>
+                                <th class="pb-3">Statut</th>
+                                <th class="pb-3 text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-50 font-medium">
+                            <!-- Ligne 1 -->
+                            <tr>
+                                <td class="py-3.5">
+                                    <p class="font-bold text-gray-900 text-xs">Marc K.</p>
+                                    <p class="text-[11px] text-gray-400">+229 97 00...</p>
+                                </td>
+                                <td class="py-3.5 text-xs">Air Force Orange (Taille 42)</td>
+                                <td class="py-3.5"><span class="text-[11px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded-md font-bold">🛵 Livraison</span></td>
+                                <td class="py-3.5">
+                                    <select onchange="this.className='text-xs font-bold p-1 rounded bg-orange-100 text-orange-600 focus:outline-none'" class="text-xs font-bold p-1 rounded bg-yellow-50 text-yellow-600 focus:outline-none cursor-pointer">
+                                        <option value="pending" selected>En attente</option>
+                                        <option value="preparing">En préparation</option>
+                                        <option value="shipping">En route</option>
+                                        <option value="delivered">Livrée</option>
+                                    </select>
+                                </td>
+                                <td class="py-3.5 text-right">
+                                    <button onclick="alert('Commande acceptée !')" class="text-xs bg-primary text-white font-bold px-3 py-1.5 rounded-lg hover:bg-opacity-90 transition shadow-sm shadow-primary/10">Valider</button>
+                                </td>
+                            </tr>
+                            <!-- Ligne 2 -->
+                            <tr>
+                                <td class="py-3.5">
+                                    <p class="font-bold text-gray-900 text-xs">Amina Z.</p>
+                                    <p class="text-[11px] text-gray-400">WhatsApp activé</p>
+                                </td>
+                                <td class="py-3.5 text-xs">Talons Prestige Daim (Taille 38)</td>
+                                <td class="py-3.5"><span class="text-[11px] bg-purple-50 text-purple-600 px-2 py-0.5 rounded-md font-bold">🏪 Retrait Magasin</span></td>
+                                <td class="py-3.5">
+                                    <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">En préparation</span>
+                                </td>
+                                <td class="py-3.5 text-right">
+                                    <button class="text-xs text-gray-400 hover:text-primary p-1"><i class="bi bi-three-dots-vertical text-lg"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bloc Produits les plus consultés (Prend 1 colonne sur PC) -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
+                <div class="flex items-center justify-between border-b border-gray-50 pb-3">
+                    <h3 class="font-black text-secondary text-base">Top Produits (Vues)</h3>
+                </div>
+
+                <div class="space-y-3.5">
+                    <!-- Produit 1 -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-100 rounded-xl shrink-0 flex items-center justify-center text-gray-400 text-[10px] italic">[Img]</div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-xs font-bold text-gray-900 truncate">Sneakers Air Force Orange Edition</h4>
+                            <p class="text-[11px] text-primary font-black">24 500 F</p>
+                        </div>
+                        <span class="text-xs font-black text-secondary bg-gray-50 px-2.5 py-1 rounded-md">🔥 842 vues</span>
+                    </div>
+                    <!-- Produit 2 -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-gray-100 rounded-xl shrink-0 flex items-center justify-center text-gray-400 text-[10px] italic">[Img]</div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-xs font-bold text-gray-900 truncate">Talons Prestige Daim Noir</h4>
+                            <p class="text-[11px] text-primary font-black">32 000 F</p>
+                        </div>
+                        <span class="text-xs font-black text-secondary bg-gray-50 px-2.5 py-1 rounded-md">🔥 398 vues</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ⚙️ MINI JS INTERACTIF POUR ASSURER LA RESPONSIVITÉ DU TIROIR MENU MOBILE -->
+    <script>
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                sidebar.classList.add('block', 'translate-x-0');
+            } else {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('block', 'translate-x-0');
+            }
+        }
+    </script>
+
+</body>
+</html>

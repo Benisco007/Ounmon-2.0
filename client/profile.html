@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil - Ounmon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen pb-24">
+
+    <!-- 📦 BANNER ET PROFIL COMPTE -->
+    <header class="bg-secondary text-white pt-8 pb-6 px-4 rounded-b-[2rem] shadow-md max-w-md mx-auto">
+        <div class="flex items-center gap-4">
+            <div class="w-14 h-14 bg-primary text-white font-black text-sm rounded-2xl flex items-center justify-center shadow-inner">
+                MO
+            </div>
+            <div>
+                <h1 class="text-sm font-black">Marc Ounmon</h1>
+                <p class="text-[11px] text-gray-400 mt-0.5">+229 97 00 00 00</p>
+                <span class="inline-block mt-1.5 text-[9px] font-black bg-primary/20 text-primary px-2 py-0.5 rounded border border-primary/20">Acheteur Certifié</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 🎛️ OPTIONS DU COMPTE -->
+    <main class="max-w-md mx-auto p-4 space-y-4">
+
+        <!-- Groupe 1 : Paramètres de livraison -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-2 shadow-sm space-y-1">
+            <button onclick="alert('Modifier l\'adresse')" class="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl transition text-left">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center text-gray-500"><i class="bi bi-geo-alt text-xs"></i></div>
+                    <div>
+                        <p class="text-xs font-bold text-secondary">Adresse de livraison</p>
+                        <p class="text-[10px] text-gray-400">Haie Vive, Cotonou, Bénin</p>
+                    </div>
+                </div>
+                <i class="bi bi-chevron-right text-xs text-gray-300"></i>
+            </button>
+        </div>
+
+        <!-- Groupe 2 : Devenir Marchand (Conversion Business 🚀) -->
+        <div class="bg-gradient-to-br from-orange-500 to-primary text-white border border-orange-100 rounded-2xl p-4 shadow-md space-y-2">
+            <div class="flex items-start justify-between">
+                <div>
+                    <h3 class="text-xs font-black">Prêt à vendre sur Ounmon ?</h3>
+                    <p class="text-[10px] text-orange-100 mt-0.5 leading-normal">Ouvrez votre boutique gratuitement en 2 minutes, gérez vos stocks et commencez à encaisser vos gains.</p>
+                </div>
+                <div class="text-xl text-white/30"><i class="bi bi-shop"></i></div>
+            </div>
+            <button onclick="alert('Redirection vers l\'inscription vendeur')" class="w-full bg-secondary text-white font-black text-[11px] py-2 rounded-xl text-center shadow-sm hover:bg-opacity-90 transition">
+                Créer mon espace vendeur
+            </button>
+        </div>
+
+        <!-- Groupe 3 : Préférences & Support -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-2 shadow-sm space-y-1">
+            <button onclick="alert('Langue')" class="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl transition text-left">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center text-gray-500"><i class="bi bi-translate text-xs"></i></div>
+                    <p class="text-xs font-bold text-secondary">Langue de l'application</p>
+                </div>
+                <span class="text-[10px] text-gray-400 font-bold mr-1">Français</span>
+            </button>
+            <button onclick="alert('Contact support')" class="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-xl transition text-left">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center text-gray-500"><i class="bi bi-headset text-xs"></i></div>
+                    <p class="text-xs font-bold text-secondary">Aide & Support technique</p>
+                </div>
+                <i class="bi bi-chevron-right text-xs text-gray-300"></i>
+            </button>
+        </div>
+
+        <!-- Bouton Déconnexion -->
+        <button onclick="alert('Déconnexion')" class="w-full bg-white border border-red-100 text-red-500 font-bold text-xs py-3 rounded-2xl text-center hover:bg-red-50/50 transition">
+            <i class="bi bi-box-arrow-right mr-1.5"></i> Se déconnecter
+        </button>
+
+    </main>
+
+    <!-- 📱 BARRE DE NAVIGATION COMMUNE BASSE -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 h-16 px-6 flex items-center justify-between z-30 max-w-md mx-auto shadow-lg">
+        <a href="home.html" class="text-gray-400 hover:text-primary transition flex flex-col items-center gap-0.5">
+            <i class="bi bi-house-door text-base"></i>
+            <span class="text-[9px] font-bold">Accueil</span>
+        </a>
+        <a href="favorites.html" class="text-gray-400 hover:text-primary transition flex flex-col items-center gap-0.5">
+            <i class="bi bi-heart text-base"></i>
+            <span class="text-[9px] font-bold">Favoris</span>
+        </a>
+        <a href="orders-list.html" class="text-gray-400 hover:text-primary transition flex flex-col items-center gap-0.5">
+            <i class="bi bi-bag-check text-base"></i>
+            <span class="text-[9px] font-bold">Commandes</span>
+        </a>
+        <a href="profile.html" class="text-primary flex flex-col items-center gap-0.5">
+            <i class="bi bi-person-fill text-base"></i>
+            <span class="text-[9px] font-bold">Mon Compte</span>
+        </a>
+    </div>
+
+</body>
+</html>

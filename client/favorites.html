@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Favoris - Ounmon</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF5722',    /* Orange Feu 🔥 */
+                        secondary: '#111827',  /* Noir Anthracite ⬛ */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen pb-24">
+
+    <!-- 🏷️ EN-TÊTE STICKY -->
+    <nav class="bg-white border-b border-gray-100 h-16 sticky top-0 px-4 flex items-center justify-between z-20 shadow-sm">
+        <h1 class="text-sm font-black text-secondary">Mes Coups de Cœur</h1>
+        <span class="text-[10px] text-gray-400 font-bold bg-gray-100 px-2 py-0.5 rounded-full">3 Articles</span>
+    </nav>
+
+    <!-- 📦 COMPOSANT PRINCIPAL -->
+    <main class="max-w-md mx-auto p-4 space-y-3">
+
+        <!-- Article Favori 1 -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-3 shadow-sm flex items-center gap-3 relative">
+            <div class="w-16 h-16 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center text-primary text-xl shrink-0">
+                <i class="bi bi-laptop"></i>
+            </div>
+            <div class="min-w-0 flex-1 pr-6">
+                <h2 class="text-xs font-black text-secondary truncate">MacBook Pro M1 (Occasion)</h2>
+                <p class="text-[10px] text-gray-400">Électronique</p>
+                <p class="text-xs font-black text-primary mt-1">450 000 FCFA</p>
+            </div>
+            <!-- Boutons d'actions rapides -->
+            <div class="absolute right-3 bottom-3 flex gap-1.5">
+                <button onclick="alert('Ajouté au panier')" class="w-8 h-8 bg-orange-50 text-primary rounded-lg flex items-center justify-center text-xs border border-orange-100 hover:bg-primary hover:text-white transition">
+                    <i class="bi bi-cart-plus"></i>
+                </button>
+            </div>
+            <button onclick="alert('Retiré des favoris')" class="absolute right-3 top-3 text-red-500 hover:text-red-600 p-1">
+                <i class="bi bi-heart-fill text-xs"></i>
+            </button>
+        </div>
+
+        <!-- Article Favori 2 -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-3 shadow-sm flex items-center gap-3 relative">
+            <div class="w-16 h-16 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center text-primary text-xl shrink-0">
+                <i class="bi bi-phone"></i>
+            </div>
+            <div class="min-w-0 flex-1 pr-6">
+                <h2 class="text-xs font-black text-secondary truncate">iPhone 13 Pro Max 256GB</h2>
+                <p class="text-[10px] text-gray-400">Électronique</p>
+                <p class="text-xs font-black text-primary mt-1">380 000 FCFA</p>
+            </div>
+            <div class="absolute right-3 bottom-3 flex gap-1.5">
+                <button onclick="alert('Ajouté au panier')" class="w-8 h-8 bg-orange-50 text-primary rounded-lg flex items-center justify-center text-xs border border-orange-100 hover:bg-primary hover:text-white transition">
+                    <i class="bi bi-cart-plus"></i>
+                </button>
+            </div>
+            <button onclick="alert('Retiré des favoris')" class="absolute right-3 top-3 text-red-500 hover:text-red-600 p-1">
+                <i class="bi bi-heart-fill text-xs"></i>
+            </button>
+        </div>
+
+    </main>
+
+    <!-- 📱 BARRE DE NAVIGATION COMMUNE BASSE -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 h-16 px-6 flex items-center justify-between z-30 max-w-md mx-auto shadow-lg">
+        <a href="home.html" class="text-gray-400 hover:text-primary transition flex flex-col items-center gap-0.5">
+            <i class="bi bi-house-door text-base"></i>
+            <span class="text-[9px] font-bold">Accueil</span>
+        </a>
+        <a href="favorites.html" class="text-primary flex flex-col items-center gap-0.5">
+            <i class="bi bi-heart-fill text-base"></i>
+            <span class="text-[9px] font-bold">Favoris</span>
+        </a>
+        <a href="orders-list.html" class="text-gray-400 hover:text-primary transition flex flex-col items-center gap-0.5">
+            <i class="bi bi-bag-check text-base"></i>
+            <span class="text-[9px] font-bold">Commandes</span>
+        </a>
+        <a href="profile.html" class="text-gray-400 hover:text-primary transition flex flex-col items-center gap-0.5">
+            <i class="bi bi-person text-base"></i>
+            <span class="text-[9px] font-bold">Mon Compte</span>
+        </a>
+    </div>
+
+</body>
+</html>
